@@ -1,1 +1,37 @@
-/*landing page or bestseller*/
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Full Library</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+        }
+    </style>
+</head>
+
+<body class="bg-[#fef1e8] text-black">
+    <div class="max-w-6xl mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-2">Edit Full Library</h1>
+        <p>Upload new photos or edit existing.</p>
+        <p id="photo-count" class="mt-2">0 photos found.</p>
+
+        <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-6">
+            <!-- Photos will be populated here -->
+        </div>
+
+        <div onclick="window.location.href='upload.html'"
+            class="border-2 border-dashed border-gray-400 mt-10 p-10 text-center cursor-pointer hover:bg-gray-100">
+            <p>Upload from computer. Accepted file types: PNG, JPG, JPEG</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
