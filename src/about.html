@@ -1,0 +1,64 @@
+<section id="about-page" class="page active">
+  <h1>Edit About</h1>
+  <h2>FEATURE PHOTOGRAPHER</h2>
+  
+  <div class="about-container">
+    <div class="bio-container">
+      <textarea id="photographer-bio" rows="12" placeholder="Enter your bio here...">Hi my name is Luna. I am a photographer based in Canada who wants to share my burning passion for photography. My interest for photography began when I was young and always grabbed one of the first digital cameras on my birthday. This sparked my never-ending career for photography. I loved taking pictures of nature whether I be in trips to my cabin during the summer or snowy days during the winter. Now I never leave without my camera.
+My passions today consist of travelling across the world to capture the true essence of nature. I love photographing popular hotspots like Banff National Park and islands around Hawaii. It is on my bucket list to photograph as many destinations around the 7 continents of the world. My work has been featured on popular media such as National Geographic and the New York Times. So join me on this journey of capturing the true beauty of earth.</textarea>
+    </div>
+    
+    <div class="photo-upload">
+      <div id="image-container" class="upload-placeholder" tabindex="0">
+        <div class="upload-instructions">
+          <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
+          </svg>
+          <p>Upload from computer.</p>
+          <p class="file-types">Accepted file types: PNG, JPG, JPEG</p>
+          <p class="drag-drop-text">Drag & drop or click to select</p>
+        </div>
+        <img id="uploaded-image" class="hidden" src="" alt="Uploaded image">
+      </div>
+      <input type="file" id="file-input" accept=".png,.jpg,.jpeg" style="display: none;">
+      <div class="upload-buttons">
+        <button id="add-photo" class="add-photo">Add</button>
+        <button id="remove-photo" class="remove-photo">Remove</button>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="photographer-information" >
+    <div class="contact-information">
+      <h2>Contact Information</h2>
+      
+      <div class="form-group">
+        <label for="phone">Primary Phone</label>
+        <input type="text" id="phone" placeholder="Enter phone number" />
+      </div>
+      
+      <div class="form-group">
+        <label for="photographer-email">Photographer Email</label>
+        <input type="email" id="photographer-email" placeholder="Enter photographer email" />
+      </div>
+      
+      <div class="form-group">
+        <label for="admin-email">Admin Email</label>
+        <input type="email" id="admin-email" placeholder="Enter admin email" />
+      </div>
+      
+      <div class="form-group">
+        <label for="studio-address">Studio Address</label>
+        <input type="text" id="studio-address" placeholder="Enter studio address" />
+      </div>
+      
+     
+    </div>
+    <div class="action-buttons">
+      <button class="save-changes">Save Changes</button>
+      <button class="cancel">Cancel</button>
+    </div>
+  </div>
+  
+</section>
