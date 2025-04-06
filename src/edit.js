@@ -16,9 +16,43 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('hashtags').value = photo.hashtags;
     document.getElementById('category').value = photo.category;
 
-    document.getElementById('save').addEventListener('click', () => savePhoto(index));
+    // Save changes when Save button is clicked
+    document.getElementById('save').addEventListener('click', () => {
+        const popup = createSaveConfirmationPopup();
+        document.body.appendChild(popup);
+
+        // Handle confirm save button
+        document.getElementById('confirm-save').addEventListener('click', () => {
+            savePhoto(index);  // Save the changes
+            popup.remove();  // Remove the popup after saving
+            window.location.href = `viewPhoto.html?index=${index}`; // Redirect to the view page
+        });
+
+        // Handle cancel button (close the popup)
+        document.getElementById('cancel-save').addEventListener('click', () => {
+            popup.remove(); // Remove the popup if user cancels the save action
+        });
+    });
+
+    // Cancel edit button with confirmation popup
+    document.getElementById('cancel-edit').addEventListener('click', () => {
+        const popup = createCancelPopup();
+        document.body.appendChild(popup);
+
+        // Handle confirm cancel button
+        document.getElementById('confirm-cancel').addEventListener('click', () => {
+            window.location.href = `viewPhoto.html?index=${index}`; // Redirect back to the view page without changes
+            popup.remove();  // Remove the popup after canceling
+        });
+
+        // Handle cancel button (close the popup)
+        document.getElementById('cancel-cancel').addEventListener('click', () => {
+            popup.remove(); // Remove the popup if user cancels the cancel action
+        });
+    });
 });
 
+// Function to save photo after editing
 function savePhoto(index) {
     const name = document.getElementById('name').value.trim();
     const place = document.getElementById('place').value.trim();
@@ -43,14 +77,34 @@ function savePhoto(index) {
     photos[index] = { name, place, price, description, motivation, hashtags, category, src: photos[index].src };
 
     localStorage.setItem('photoLibrary', JSON.stringify(photos));
-
-    alert("Photo updated successfully.");
-    window.location.href = 'index.html'; // Redirect back to the main page
 }
 
-function cancelEdit() {
-    window.location.href = '/src/index.html';
+// Function to create save confirmation popup
+function createSaveConfirmationPopup() {
+    const popup = document.createElement('div');
+    popup.classList.add('popup-container');
+    popup.innerHTML = `
+        <h2>Are you sure you want to save these changes?</h2>
+        <p>All previous unsaved changes will be applied.</p>
+        <div class="popup-buttons">
+            <button id="confirm-save">Yes, save changes</button>
+            <button id="cancel-save">No, stay</button>
+        </div>
+    `;
+    return popup;
 }
 
-
-
+// Function to create cancel confirmation popup
+function createCancelPopup() {
+    const popup = document.createElement('div');
+    popup.classList.add('popup-container');
+    popup.innerHTML = `
+        <h2>Are you sure you want to cancel?</h2>
+        <p>All saved changes will go away.</p>
+        <div class="popup-buttons">
+            <button id="confirm-cancel">Yes, cancel</button>
+            <button id="cancel-cancel">No, stay</button>
+        </div>
+    `;
+    return popup;
+}

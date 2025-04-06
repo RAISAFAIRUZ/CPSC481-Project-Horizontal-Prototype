@@ -19,18 +19,38 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = `edit.html?index=${index}`;
     });
 
-    // Handle Remove button click
+    // Handle Remove button click to show confirmation popup
     document.getElementById('remove').addEventListener('click', () => {
-        if (confirm("Are you sure you want to delete this photo? This action cannot be undone.")) {
+        const popup = document.createElement('div');
+        popup.classList.add('popup-container');
+        popup.innerHTML = `
+            <h2>Are you sure you want to delete this photo?</h2>
+            <p>This action cannot be undone.</p>
+            <div class="popup-buttons">
+                <button id="confirm-delete">Yes, delete</button>
+                <button id="cancel-delete">Cancel</button>
+            </div>
+        `;
+        document.body.appendChild(popup);
+
+        // Handle confirm delete button
+        document.getElementById('confirm-delete').addEventListener('click', () => {
             removePhoto(index);
-        }
+            popup.remove();  // Remove the popup after the photo is removed
+            window.location.href = 'index.html';  // Redirect to the main page
+        });
+
+        // Handle cancel button
+        document.getElementById('cancel-delete').addEventListener('click', () => {
+            popup.remove();  // Just remove the popup if the user cancels
+        });
     });
 });
 
+// Function to remove photo from localStorage
 function removePhoto(index) {
     let photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
     photos.splice(index, 1); // Remove the photo
     localStorage.setItem('photoLibrary', JSON.stringify(photos));
     alert("Photo removed successfully.");
-    window.location.href = 'index.html'; // Redirect back to the main page
 }
