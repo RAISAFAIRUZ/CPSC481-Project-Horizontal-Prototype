@@ -17,23 +17,27 @@ function loadLibrary() {
     const count = document.getElementById('photo-count');
     let photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
 
-    grid.innerHTML = '';
+    grid.innerHTML = ''; // Clear existing content
     photos.forEach((photo, index) => {
         const item = document.createElement('div');
         item.className = 'bg-white rounded-lg overflow-hidden shadow cursor-pointer';
+
+        // Redirect to the viewPhoto page when the photo is clicked
         item.addEventListener('click', () => {
-            window.location.href = `edit.html?index=${index}`;
+            window.location.href = `viewPhoto.html?index=${index}`;
         });
+
         item.innerHTML = `
-        <img src="${photo.src}" alt="${photo.name}" class="w-full h-40 object-cover">
-        <div class="p-2">
-          <strong>${photo.name}</strong>
-          <p>${photo.category}</p>
-          <p>${photo.price}</p>
-        </div>
-      `;
+            <img src="${photo.src}" alt="${photo.name}" class="w-full h-40 object-cover">
+            <div class="p-2">
+                <strong>${photo.name}</strong>
+                <p>${photo.category}</p>
+                <p>${photo.price}</p>
+            </div>
+        `;
         grid.appendChild(item);
     });
+
     count.textContent = `${photos.length} photos found.`;
 }
 
@@ -122,12 +126,12 @@ function handleSubmit(e) {
         showPopupMessage("Success! Photo has been added.");
 
         setTimeout(() => {
-            window.location.href = 'index.html';
+            window.location.href = '/src/index.html';
         }, 1500);
     };
     reader.readAsDataURL(photo);
 }
 
 function cancelUpload() {
-    window.location.href = 'index.html';
+    window.location.href = '/src/index.html';
 }
