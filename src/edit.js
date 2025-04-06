@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
     const photo = photos[index];
 
+    // Set the photo image in the edit page
+    document.getElementById('photo').src = photo.src;
+
     // Pre-fill the edit form with the photo data
     document.getElementById('name').value = photo.name;
     document.getElementById('place').value = photo.place;
