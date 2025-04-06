@@ -1,0 +1,68 @@
+<section id="payment-page" class="page active">
+  <h1>Payment Details</h1>
+
+  <form id="payment-form" class="payment-form">
+    <div class="form-group">
+      <label for="Email">Email address</label>
+      <input type="Email" id="Email" placeholder="Enter Email Address" required>
+    </div>
+
+    <div class="form-group">
+      <label for="card-name">Name on card</label>
+      <input type="text" id="card-name" placeholder="Enter Full Name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="card-number">Card number</label>
+      <input type="text" id="card-number" placeholder="Enter Card Number" required>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group half">
+        <label for="exp-date">Exp. date(MM/YYYY)</label>
+        <input type="text" id="exp-date" placeholder="MM/YYYY" required>
+      </div>
+
+      <div class="form-group half">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" placeholder="###" required>
+      </div>
+    </div>
+
+    <h2>Billing Address</h2>
+
+    <div class="form-group">
+      <label for="full-name">Full Name</label>
+      <input type="text" id="full-name" placeholder="Enter full name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="street-address">Street Address</label>
+      <input type="text" id="street-address" placeholder="Enter your address" required>
+    </div>
+
+    <div class="form-group">
+      <label for="postal-code">Postal Code</label>
+      <input type="text" id="postal-code" placeholder="### ###" required>
+    </div>
+
+    <div class="form-group">
+      <label for="city">City</label>
+      <input type="text" id="city" placeholder="City name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="state-province">State/Province</label>
+      <input type="text" id="state-province" placeholder="Province name" required>
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" id="country" placeholder="Country" required>
+    </div>
+  </form>
+  <div class="payment-summary">
+    <p>Subtotal: <span id="payment-total" class="total-amount">$0.00</span></p>
+    <button type="submit" class="checkout-button">Proceed to Checkout</button>
+  </div>
+</section>
