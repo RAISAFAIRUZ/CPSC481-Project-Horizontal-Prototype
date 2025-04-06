@@ -47,3 +47,10 @@ function savePhoto(index) {
     alert("Photo updated successfully.");
     window.location.href = 'index.html'; // Redirect back to the main page
 }
+
+function cancelEdit() {
+    window.location.href = '/src/index.html';
+}
+
+
+
