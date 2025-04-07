@@ -2,17 +2,23 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Photo</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Fonts and Custom Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
     <style>
         body {
             font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
         }
 
-        /* Popup styles for consistency */
         .popup-container {
             background-color: #ffdddd;
             border: 2px solid #ff4d4d;
@@ -61,7 +67,11 @@
     </style>
 </head>
 
-<body class="bg-[#fef1e8] text-black">
+<body>
+    <!-- Include header -->
+    <div w3-include-html="header.html"></div>
+
+    <!-- Main content -->
     <div class="max-w-7xl mx-auto p-8 flex flex-col gap-8">
         <h1 class="text-2xl font-bold">Edit Photo</h1>
 
@@ -119,6 +129,12 @@
         </form>
     </div>
 
+    <!-- Include footer -->
+    <div w3-include-html="footer.html"></div>
+
+    <!-- Scripts -->
+    <script src="headerFooter.js"></script>
+    <script>includeHTML();</script>
     <script src="edit.js"></script>
 </body>
 

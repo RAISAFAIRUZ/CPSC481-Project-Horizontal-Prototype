@@ -2,14 +2,17 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>View Photo</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
     <style>
         body {
             font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
         }
 
         #photo {
@@ -25,7 +28,6 @@
             margin: 0 auto;
         }
 
-        /* Popup styles for consistency */
         .popup-container {
             background-color: #ffdddd;
             border: 2px solid #ff4d4d;
@@ -41,7 +43,6 @@
             transform: translate(-50%, -50%);
             z-index: 9999;
             width: 80%;
-            max-width: 500px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
@@ -74,40 +75,33 @@
     </style>
 </head>
 
-<body class="bg-[#fef1e8] text-black">
+<body>
+    <div w3-include-html="header.html"></div>
+
     <div class="max-w-7xl mx-auto p-8 flex flex-col gap-8">
-        <h1 class="text-3xl font-bold mb-4">Photo Details</h1>
+      
 
         <div id="photo-detail" class="flex flex-col lg:flex-row gap-8">
-            <!-- Left section for photo -->
             <div class="photo-container">
-                <img id="photo" src="" alt="Photo" class="w-full h-auto rounded-lg">
+                <img id="photo" src="" alt="Photo" />
             </div>
-
-            <!-- Right section for photo details -->
             <div class="w-full lg:w-2/3 flex flex-col gap-6">
                 <p id="name" class="font-extrabold text-3xl"></p>
                 <p id="place" class="text-xl text-gray-600"></p>
                 <p id="price" class="text-2xl font-medium mt-2"></p>
-
                 <div class="mt-6">
                     <h3 class="font-semibold text-xl">Description</h3>
                     <p id="description" class="mt-2 text-gray-700"></p>
                 </div>
-
                 <div class="mt-6">
                     <h3 class="font-semibold text-xl">Motivation</h3>
                     <p id="motivation" class="mt-2 text-gray-700"></p>
                 </div>
-
                 <div class="mt-6">
                     <h3 class="font-semibold text-xl">Hashtags</h3>
                     <p id="hashtags" class="mt-2 text-gray-700"></p>
                 </div>
-
                 <p id="category" class="mt-2 text-gray-600"></p>
-
-                <!-- Buttons for Edit and Remove -->
                 <div class="flex gap-4 mt-8">
                     <button id="edit" class="bg-black text-white px-6 py-2 rounded-lg">Edit</button>
                     <button id="remove" class="bg-red-600 text-white px-6 py-2 rounded-lg">Remove</button>
@@ -116,6 +110,9 @@
         </div>
     </div>
 
+    <div w3-include-html="footer.html"></div>
+    <script src="headerFooter.js"></script>
+    <script>includeHTML();</script>
     <script src="view.js"></script>
 </body>
 

@@ -2,22 +2,33 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Upload Photo</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+
+    <!-- Fonts and Custom Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
+
     <style>
         body {
             font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
         }
     </style>
 </head>
 
-<body class="bg-[#fef1e8] text-black">
-    <div class="max-w-7xl mx-auto p-8 flex flex-col gap-8">
+<body>
+    <!-- Include header -->
+    <div w3-include-html="header.html"></div>
 
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto p-8 flex flex-col gap-8">
         <h1 class="text-2xl font-bold">Edit Page</h1>
 
         <form id="upload-form" class="flex flex-col gap-8">
@@ -32,22 +43,22 @@
                         <span class="text-gray-600 text-sm">Upload from computer. Accepted file types: PNG, JPG,
                             JPEG</span>
                     </label>
-                    <input type="file" id="photo" accept="image/*" class="hidden">
+                    <input type="file" id="photo" accept="image/*" class="hidden" />
                     <img id="preview" src="" alt="Preview" class="mt-4 max-w-[200px] rounded-lg hidden" />
                 </div>
 
                 <div class="w-full lg:w-2/3 flex flex-col gap-4">
                     <div>
                         <label class="block mb-1">Name</label>
-                        <input type="text" id="name" placeholder="Name" class="w-full p-3 border rounded">
+                        <input type="text" id="name" placeholder="Name" class="w-full p-3 border rounded" />
                     </div>
                     <div>
                         <label class="block mb-1">Place</label>
-                        <input type="text" id="place" placeholder="Place" class="w-full p-3 border rounded">
+                        <input type="text" id="place" placeholder="Place" class="w-full p-3 border rounded" />
                     </div>
                     <div>
                         <label class="block mb-1">Price</label>
-                        <input type="text" id="price" placeholder="$3.99" class="w-full p-3 border rounded">
+                        <input type="text" id="price" placeholder="$3.99" class="w-full p-3 border rounded" />
                     </div>
                 </div>
             </div>
@@ -63,7 +74,7 @@
                 </div>
                 <div>
                     <label class="block mb-1">Hashtags</label>
-                    <input type="text" id="hashtags" placeholder="#Hashtags" class="w-full p-3 border rounded">
+                    <input type="text" id="hashtags" placeholder="#Hashtags" class="w-full p-3 border rounded" />
                 </div>
                 <div>
                     <label class="block mb-1">Category</label>
@@ -78,16 +89,25 @@
             </div>
 
             <div class="flex justify-end gap-2">
-                <button type="button" onclick="previewPhoto()" class="bg-black text-white px-4 py-2 rounded">Preview
-                    Photo</button>
-                <button type="submit" class="bg-black text-white px-4 py-2 rounded">Save Photo</button>
-                <button type="button" onclick="cancelUpload()"
-                    class="bg-black text-white px-4 py-2 rounded">Cancel</button>
+                <button type="button" onclick="previewPhoto()" class="bg-black text-white px-4 py-2 rounded">
+                    Preview Photo
+                </button>
+                <button type="submit" class="bg-black text-white px-4 py-2 rounded">
+                    Save Photo
+                </button>
+                <button type="button" onclick="cancelUpload()" class="bg-black text-white px-4 py-2 rounded">
+                    Cancel
+                </button>
             </div>
         </form>
-
     </div>
 
+    <!-- Include footer -->
+    <div w3-include-html="footer.html"></div>
+
+    <!-- Scripts -->
+    <script src="headerFooter.js"></script>
+    <script>includeHTML();</script>
     <script src="script.js"></script>
 </body>
 
