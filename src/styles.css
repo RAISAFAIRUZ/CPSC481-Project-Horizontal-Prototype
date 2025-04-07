@@ -48,7 +48,13 @@ h1 {
     border: 2px dashed #999;
     text-align: center;
     cursor: pointer;
-    background-color: #fff7f2;
+    background-color: #FEEDD5;
+    transition: color 0.3s ease;
+}
+
+.upload-box:hover p {
+    color: #f4a261;
+    /* Same orange used in nav link hover */
 }
 
 .upload-image-box {

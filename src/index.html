@@ -12,6 +12,8 @@
     <!-- Fonts and Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="headerFooterStyle.css" />
+    <link rel="stylesheet" href="styles.css" />
+
     <style>
         body {
             font-family: 'Lora', serif;
@@ -30,8 +32,13 @@
     <!-- Page Content -->
     <div class="max-w-7xl mx-auto p-8 flex flex-col">
         <h1 class="text-3xl font-bold mb-2">Edit Full Library</h1>
-        <p>Upload new photos or edit existing.</p>
-        <p id="photo-count" class="mt-2">0 photos found.</p>
+        <p class="text-base font-semibold text-gray-700 leading-relaxed">
+            Upload new pictures in your collection or edit existing picture details.
+        </p>
+
+        <p id="photo-count" class="mt-2 text-sm text-gray-600 italic">0 photos found.</p>
+
+
 
         <!-- Grid of Photos -->
         <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-6">
@@ -39,8 +46,7 @@
         </div>
 
         <!-- Upload Box -->
-        <div onclick="window.location.href='upload.html'"
-            class="border-2 border-dashed border-gray-400 mt-10 p-10 text-center cursor-pointer hover:bg-gray-100">
+        <div onclick="window.location.href='upload.html'" class="upload-box">
             <p>Upload from computer. Accepted file types: PNG, JPG, JPEG</p>
         </div>
     </div>
