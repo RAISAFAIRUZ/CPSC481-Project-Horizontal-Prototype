@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Categories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div w3-include-html="header.html"></div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-8 py-12">
+        <h1 class="text-3xl font-bold mb-6">Edit Category Collection</h1>
+        <p class="mb-10 text-base">Choose which category to edit.</p>
+
+        <!-- Dynamic categories inserted here -->
+        <div id="dynamicCategories"></div>
+
+        <!-- Hardcoded categories -->
+        <!-- Hawaii -->
+        <div class="flex flex-col md:flex-row items-center gap-6 mb-12">
+            <img src="../Images/HawaiiSunset.jpg" alt="Hawaii" class="w-full md:w-[400px] rounded-xl" />
+            <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
+                <h2 class="text-xl font-bold">Hawaii</h2>
+                <p class="text-gray-600">Photography from Hawaii</p>
+                <button class="bg-black text-white px-4 py-2 rounded mt-2">Edit</button>
+            </div>
+        </div>
+
+        <!-- Banff -->
+        <div class="flex flex-col md:flex-row items-center gap-6 mb-12">
+            <img src="../Images/BanffMountains.jpg" alt="Banff" class="w-full md:w-[400px] rounded-xl" />
+            <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
+                <h2 class="text-xl font-bold">Banff</h2>
+                <p class="text-gray-600">Photography from Banff</p>
+                <button class="bg-black text-white px-4 py-2 rounded mt-2">Edit</button>
+            </div>
+        </div>
+
+        <!-- Mexico -->
+        <div class="flex flex-col md:flex-row items-center gap-6 mb-12">
+            <img src="../Images/BeachSunset.jpg" alt="Mexico" class="w-full md:w-[400px] rounded-xl" />
+            <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
+                <h2 class="text-xl font-bold">Mexico</h2>
+                <p class="text-gray-600">Photography from Mexico</p>
+                <button class="bg-black text-white px-4 py-2 rounded mt-2">Edit</button>
+            </div>
+        </div>
+
+        <!-- Create New Category -->
+        <div class="flex flex-col md:flex-row items-center gap-6 mb-12" id="createBox">
+            <img src="../Images/uploadNew.png" alt="Create" class="w-full md:w-[400px] rounded-xl bg-blue-300 p-8" />
+            <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
+                <h2 class="text-xl font-bold">Create New Category</h2>
+                <p class="text-gray-600">Add New Category</p>
+                <button onclick="window.location.href='addCategory.html'"
+                    class="bg-black text-white px-4 py-2 rounded mt-2">
+                    Edit
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (outside content container for full width) -->
+    <footer w3-include-html="footer.html"></footer>
+
+    <script src="headerFooter.js"></script>
+    <script>
+        includeHTML();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const categories = JSON.parse(localStorage.getItem('categories')) || [];
+            const container = document.getElementById('dynamicCategories');
+
+            categories.forEach(cat => {
+                const block = document.createElement('div');
+                block.className = 'flex flex-col md:flex-row items-center gap-6 mb-12';
+                block.innerHTML = `
+          <img src="../Images/noImage.png" alt="${cat.name}" class="w-full md:w-[400px] rounded-xl object-cover h-64" />
+          <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
+            <h2 class="text-xl font-bold">${cat.name}</h2>
+            <p class="text-gray-600">${cat.description}</p>
+            <button class="bg-black text-white px-4 py-2 rounded mt-2">Edit</button>
+          </div>
+        `;
+                container.appendChild(block);
+            });
+        });
+    </script>
+</body>
+
+</html>
