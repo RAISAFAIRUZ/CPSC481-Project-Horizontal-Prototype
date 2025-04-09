@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Category to Edit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
+        }
+
+        .popup-container {
+            font-family: 'Lora', serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background-color: #ffdddd;
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            border-radius: 8px;
+            color: #ff4d4d;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .popup-buttons button {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-style: italic;
+            cursor: pointer;
+        }
+
+        .popup-container.success {
+            background-color: #ddffdd;
+            border-color: #33cc33;
+            color: #228822;
+        }
+
+        .popup-buttons.success button {
+            background-color: #33cc33;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <div w3-include-html="header.html"></div>
+
+    <main class="flex-1 p-8 pl-20 max-w-7xl">
+        <h1 class="text-3xl font-bold mb-4">Select a Category to Edit</h1>
+        <p class="text-gray-600 mb-6">Choose a category below to begin editing.</p>
+
+        <div class="flex items-center gap-4 mb-6">
+            <select id="categorySelect" class="w-64 border border-black p-2 rounded text-sm">
+                <option value="">Select Category</option>
+            </select>
+            <button onclick="goToEditPage()" class="bg-black text-white px-4 py-2 rounded">Edit</button>
+            <button onclick="window.location.href='editCategories.html'"
+                class="bg-black text-white px-4 py-2 rounded">Back</button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer w3-include-html="footer.html"></footer>
+
+    <script src="headerFooter.js"></script>
+    <script>
+        includeHTML();
+
+        window.onload = () => {
+            const select = document.getElementById("categorySelect");
+            const categories = JSON.parse(localStorage.getItem("categories")) || [];
+
+            categories.forEach(cat => {
+                const option = document.createElement("option");
+                option.value = cat.name;
+                option.textContent = cat.name;
+                select.appendChild(option);
+            });
+        };
+
+        function goToEditPage() {
+            const selected = document.getElementById("categorySelect").value;
+            if (!selected) {
+                showPopup("Please select a category to edit.");
+                return;
+            }
+            window.location.href = `editCategoryDetails.html?name=${encodeURIComponent(selected)}`;
+        }
+
+        function showPopup(message) {
+            const popup = document.createElement("div");
+            popup.classList.add("popup-container");
+            popup.innerHTML = `
+        <h2>${message}</h2>
+        <div class="popup-buttons">
+          <button onclick="this.closest('.popup-container').remove()">OK</button>
+        </div>`;
+            document.body.appendChild(popup);
+        }
+    </script>
+</body>
+
+</html>

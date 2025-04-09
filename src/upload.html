@@ -109,6 +109,19 @@
     <script src="headerFooter.js"></script>
     <script>includeHTML();</script>
     <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const select = document.getElementById('category');
+            const savedOptions = JSON.parse(localStorage.getItem('categoryOptions')) || [];
+            savedOptions.forEach(option => {
+                const opt = document.createElement('option');
+                opt.value = option;
+                opt.textContent = option;
+                select.appendChild(opt);
+            });
+        });
+    </script>
 </body>
 
 </html>

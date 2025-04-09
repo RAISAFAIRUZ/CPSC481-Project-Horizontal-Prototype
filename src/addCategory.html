@@ -89,14 +89,14 @@
             <div class="mb-10">
                 <label for="categoryName" class="block mb-2 text-lg">Enter Name</label>
                 <input type="text" id="categoryName" class="w-full p-3 border border-black rounded text-base max-w-4xl"
-                    placeholder="Dubai" />
+                    placeholder="e.g. Mountains" />
             </div>
 
             <div class="mb-10">
                 <label for="categoryDescription" class="block mb-2 text-lg">Enter Description</label>
                 <input type="text" id="categoryDescription"
                     class="w-full p-3 border border-black rounded text-base max-w-4xl"
-                    placeholder="Photography from Dubai" />
+                    placeholder="e.g. Photography from the mountains" />
             </div>
 
             <!-- Button section, floated right -->
@@ -131,6 +131,12 @@
             localStorage.setItem('categories', JSON.stringify(categories));
 
             showPopup("Success! All changes have been saved.", true);
+            let categoryOptions = JSON.parse(localStorage.getItem('categoryOptions')) || [];
+            if (!categoryOptions.includes(name)) {
+                categoryOptions.push(name);
+                localStorage.setItem('categoryOptions', JSON.stringify(categoryOptions));
+            }
+
         }
 
         function confirmCancel() {

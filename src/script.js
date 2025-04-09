@@ -117,11 +117,19 @@ function handleSubmit(e) {
 
     const reader = new FileReader();
     reader.onload = function () {
-        let photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
-        photos.push({
+        const newPhoto = {
             name, place, price, description, motivation, hashtags, category, src: reader.result
-        });
+        };
+
+        // Add to main library
+        let photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+        photos.push(newPhoto);
         localStorage.setItem('photoLibrary', JSON.stringify(photos));
+
+        // Add to category-specific images
+        let categoryImages = JSON.parse(localStorage.getItem(`categoryImages_${category}`)) || [];
+        categoryImages.push(newPhoto);
+        localStorage.setItem(`categoryImages_${category}`, JSON.stringify(categoryImages));
 
         showPopupMessage("Success! Photo has been added.");
 
@@ -131,6 +139,7 @@ function handleSubmit(e) {
     };
     reader.readAsDataURL(photo);
 }
+
 
 function cancelUpload() {
     window.location.href = '/src/index.html';

@@ -22,84 +22,46 @@
     <div w3-include-html="header.html"></div>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-8 py-12">
-        <h1 class="text-3xl font-bold mb-6">Edit Category Collection</h1>
-        <p class="mb-10 text-base">Choose which category to edit.</p>
+    <div class="max-w-7xl mx-auto p-8 flex flex-col gap-12">
+        <h1 class="text-3xl font-bold mb-1">Edit Category Collection</h1>
 
-        <!-- Dynamic categories inserted here -->
-        <div id="dynamicCategories"></div>
 
-        <!-- Hardcoded categories -->
-        <!-- Hawaii -->
-        <div class="flex flex-col md:flex-row items-center gap-6 mb-12">
-            <img src="../Images/HawaiiSunset.jpg" alt="Hawaii" class="w-full md:w-[400px] rounded-xl" />
-            <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
-                <h2 class="text-xl font-bold">Hawaii</h2>
-                <p class="text-gray-600">Photography from Hawaii</p>
-                <button class="bg-black text-white px-4 py-2 rounded mt-2">Edit</button>
+        <!-- Section 1: Edit Categories -->
+        <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="flex-1">
+                <h2 class="text-xl font-semibold">Edit Catagories</h2>
+                <p class="text-sm text-gray-600">Add, Delete, or Edit Existing Catagories</p>
+                <button onclick="window.location.href='selectCategoryToEdit.html'"
+                    class="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Edit</button>
+            </div>
+            <div class="grid grid-cols-2 gap-3 w-[380px] md:w-[380px]">
+                <img src="../Images/BanffMountains.jpg" alt="Image 1" class="rounded-xl w-full h-32 object-cover">
+                <img src="../Images/Burj.jpg" alt="Image 2" class="rounded-xl w-full h-32 object-cover">
+                <img src="../Images/HawaiiRainbow.jpg" alt="Image 3" class="rounded-xl w-full h-32 object-cover">
+                <img src="../Images/PurpleSunset.jpg" alt="Image 4" class="rounded-xl w-full h-32 object-cover">
             </div>
         </div>
 
-        <!-- Banff -->
-        <div class="flex flex-col md:flex-row items-center gap-6 mb-12">
-            <img src="../Images/BanffMountains.jpg" alt="Banff" class="w-full md:w-[400px] rounded-xl" />
-            <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
-                <h2 class="text-xl font-bold">Banff</h2>
-                <p class="text-gray-600">Photography from Banff</p>
-                <button class="bg-black text-white px-4 py-2 rounded mt-2">Edit</button>
-            </div>
-        </div>
-
-        <!-- Mexico -->
-        <div class="flex flex-col md:flex-row items-center gap-6 mb-12">
-            <img src="../Images/BeachSunset.jpg" alt="Mexico" class="w-full md:w-[400px] rounded-xl" />
-            <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
-                <h2 class="text-xl font-bold">Mexico</h2>
-                <p class="text-gray-600">Photography from Mexico</p>
-                <button class="bg-black text-white px-4 py-2 rounded mt-2">Edit</button>
-            </div>
-        </div>
-
-        <!-- Create New Category -->
-        <div class="flex flex-col md:flex-row items-center gap-6 mb-12" id="createBox">
-            <img src="../Images/uploadNew.png" alt="Create" class="w-full md:w-[400px] rounded-xl bg-blue-300 p-8" />
-            <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
-                <h2 class="text-xl font-bold">Create New Category</h2>
-                <p class="text-gray-600">Add New Category</p>
+        <!-- Section 2: Create New Category -->
+        <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="flex-1">
+                <h2 class="text-xl font-semibold">Create New Category</h2>
+                <p class="text-sm text-gray-600">Add New Category</p>
                 <button onclick="window.location.href='addCategory.html'"
-                    class="bg-black text-white px-4 py-2 rounded mt-2">
-                    Edit
-                </button>
+                    class="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Edit</button>
             </div>
+            <img src="../Images/UploadNew.jpg" alt="Upload Placeholder"
+                class="rounded-xl w-full md:w-96 h-56 object-cover" />
         </div>
     </div>
 
-    <!-- Footer (outside content container for full width) -->
-    <footer w3-include-html="footer.html"></footer>
+    <!-- Footer -->
+    <div w3-include-html="footer.html"></div>
 
     <script src="headerFooter.js"></script>
-    <script>
-        includeHTML();
-
-        document.addEventListener('DOMContentLoaded', () => {
-            const categories = JSON.parse(localStorage.getItem('categories')) || [];
-            const container = document.getElementById('dynamicCategories');
-
-            categories.forEach(cat => {
-                const block = document.createElement('div');
-                block.className = 'flex flex-col md:flex-row items-center gap-6 mb-12';
-                block.innerHTML = `
-          <img src="../Images/noImage.png" alt="${cat.name}" class="w-full md:w-[400px] rounded-xl object-cover h-64" />
-          <div class="flex flex-col gap-2 md:items-start md:text-left text-center">
-            <h2 class="text-xl font-bold">${cat.name}</h2>
-            <p class="text-gray-600">${cat.description}</p>
-            <button class="bg-black text-white px-4 py-2 rounded mt-2">Edit</button>
-          </div>
-        `;
-                container.appendChild(block);
-            });
-        });
-    </script>
+    <script>includeHTML();</script>
 </body>
+
+</html>
 
 </html>
