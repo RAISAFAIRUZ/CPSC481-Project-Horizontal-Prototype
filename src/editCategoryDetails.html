@@ -82,7 +82,6 @@
         <label class="block mb-2 font-semibold">Description</label>
         <input id="catDesc" class="w-full p-3 mb-6 border border-black rounded" />
 
-
         <div class="flex justify-between items-start mt-8">
             <!-- Delete on left -->
             <div>
@@ -96,8 +95,6 @@
                     Changes</button>
                 <button onclick="cancelEdit()" class="bg-black text-white px-6 py-2 rounded w-48">Cancel</button>
             </div>
-        </div>
-
         </div>
     </main>
 
@@ -119,13 +116,11 @@
             }
             document.getElementById("catName").value = currentCategory.name;
             document.getElementById("catDesc").value = currentCategory.description;
-            document.getElementById("catThumb").value = currentCategory.thumbnail || '';
         };
 
         function saveCategory() {
             const name = document.getElementById("catName").value.trim();
             const desc = document.getElementById("catDesc").value.trim();
-            const thumb = document.getElementById("catThumb").value.trim();
 
             if (!name || !desc) {
                 showPopup("Name and Description cannot be empty.");
@@ -134,7 +129,6 @@
 
             currentCategory.name = name;
             currentCategory.description = desc;
-            currentCategory.thumbnail = thumb;
             localStorage.setItem("categories", JSON.stringify(categories));
             showPopup("Changes saved successfully!", true);
         }

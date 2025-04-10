@@ -114,10 +114,7 @@
                     <label class="block mb-1">Category</label>
                     <select id="category" class="w-full p-3 border rounded">
                         <option value="">Select Category</option>
-                        <option value="Hawaii">Hawaii</option>
-                        <option value="France">France</option>
-                        <option value="Dubai">Dubai</option>
-                        <option value="Calgary">Calgary</option>
+                        <!-- Options will be loaded dynamically -->
                     </select>
                 </div>
             </div>
@@ -136,6 +133,24 @@
     <script src="headerFooter.js"></script>
     <script>includeHTML();</script>
     <script src="edit.js"></script>
+
+    <!-- ✅ Dynamic Category Dropdown Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const select = document.getElementById('category');
+            const savedCategories = JSON.parse(localStorage.getItem('categories')) || [];
+
+            // Reset and add default option
+            select.innerHTML = '<option value="">Select Category</option>';
+
+            savedCategories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.name;
+                option.textContent = cat.name;
+                select.appendChild(option);
+            });
+        });
+    </script>
 </body>
 
 </html>

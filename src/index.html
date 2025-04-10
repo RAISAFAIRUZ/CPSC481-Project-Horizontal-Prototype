@@ -17,8 +17,6 @@
     <style>
         body {
             font-family: 'Lora', serif;
-            margin: 0;
-            padding: 0;
             background-color: #FEEDD5;
             color: black;
         }
@@ -26,10 +24,10 @@
 </head>
 
 <body>
-    <!-- Header scrolls naturally with the page -->
+    <!-- Header -->
     <div w3-include-html="header.html"></div>
 
-    <!-- Page Content -->
+    <!-- Main Content -->
     <div class="max-w-7xl mx-auto p-8 flex flex-col">
         <h1 class="text-3xl font-bold mb-2">Edit Full Library</h1>
         <p class="text-base font-semibold text-gray-700 leading-relaxed">
@@ -38,11 +36,20 @@
 
         <p id="photo-count" class="mt-2 text-sm text-gray-600 italic">0 photos found.</p>
 
+        <!-- Dropdown Filter -->
+        <div class="mt-4 max-w-xs">
+            <label for="categoryFilter" class="block font-medium mb-1">Filter by Category</label>
+            <select id="categoryFilter" class="border border-black px-3 py-2 rounded w-full">
+                <option value="">Show All</option>
+            </select>
+        </div>
 
+        <!-- Category Description -->
+        <p id="category-description" class="mt-2 text-sm italic text-gray-700"></p>
 
-        <!-- Grid of Photos -->
+        <!-- Photo Grid -->
         <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-6">
-            <!-- Photos will be dynamically added -->
+            <!-- Photos inserted by JS -->
         </div>
 
         <!-- Upload Box -->
@@ -51,13 +58,76 @@
         </div>
     </div>
 
-    <!-- Footer scrolls with page -->
+    <!-- Footer -->
     <div w3-include-html="footer.html"></div>
 
     <!-- Scripts -->
     <script src="headerFooter.js"></script>
     <script>includeHTML();</script>
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('photo-grid');
+            const count = document.getElementById('photo-count');
+            const dropdown = document.getElementById('categoryFilter');
+            const descBox = document.getElementById('category-description');
+
+            const allPhotos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+            const categories = JSON.parse(localStorage.getItem('categories')) || [];
+
+            // Populate dropdown
+            categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.name;
+                option.textContent = cat.name;
+                dropdown.appendChild(option);
+            });
+
+            // Initial render
+            renderPhotos(allPhotos);
+            descBox.textContent = '';
+
+            dropdown.addEventListener('change', () => {
+                const selected = dropdown.value;
+                const filtered = selected
+                    ? allPhotos.filter(p => p.category === selected)
+                    : allPhotos;
+
+                // Set category description
+                const match = categories.find(c => c.name === selected);
+                descBox.textContent = match ? match.description : '';
+
+                renderPhotos(filtered);
+            });
+
+            function renderPhotos(photos) {
+                grid.innerHTML = '';
+                photos.forEach((photo, i) => {
+                    const item = document.createElement('div');
+                    item.className = 'bg-white rounded-lg overflow-hidden shadow cursor-pointer';
+                    item.addEventListener('click', () => {
+                        const globalIndex = getOriginalIndex(photo);
+                        window.location.href = `viewPhoto.html?index=${globalIndex}`;
+                    });
+                    item.innerHTML = `
+            <img src="${photo.src}" alt="${photo.name}" class="w-full h-40 object-cover">
+            <div class="p-2">
+              <strong>${photo.name}</strong>
+              <p>${photo.category}</p>
+              <p>${photo.price}</p>
+            </div>
+          `;
+                    grid.appendChild(item);
+                });
+                count.textContent = `${photos.length} photos found.`;
+            }
+
+            function getOriginalIndex(photo) {
+                const all = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+                return all.findIndex(p => JSON.stringify(p) === JSON.stringify(photo));
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -80,10 +80,7 @@
                     <label class="block mb-1">Category</label>
                     <select id="category" class="w-full p-3 border rounded">
                         <option value="">Select Category</option>
-                        <option value="Hawaii">Hawaii</option>
-                        <option value="France">France</option>
-                        <option value="Dubai">Dubai</option>
-                        <option value="Calgary">Calgary</option>
+                        <!-- Categories will be loaded here -->
                     </select>
                 </div>
             </div>
@@ -110,15 +107,20 @@
     <script>includeHTML();</script>
     <script src="script.js"></script>
 
+    <!-- ✅ Clean Category Loader -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const select = document.getElementById('category');
-            const savedOptions = JSON.parse(localStorage.getItem('categoryOptions')) || [];
-            savedOptions.forEach(option => {
-                const opt = document.createElement('option');
-                opt.value = option;
-                opt.textContent = option;
-                select.appendChild(opt);
+            const categories = JSON.parse(localStorage.getItem('categories')) || [];
+
+            // Clear existing options
+            select.innerHTML = '<option value="">Select Category</option>';
+
+            categories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.name;
+                option.textContent = cat.name;
+                select.appendChild(option);
             });
         });
     </script>

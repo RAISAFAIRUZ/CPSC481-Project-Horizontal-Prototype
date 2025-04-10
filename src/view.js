@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('description').textContent = photo.description;
     document.getElementById('motivation').textContent = photo.motivation;
     document.getElementById('hashtags').textContent = photo.hashtags;
-    document.getElementById('category').textContent = photo.category;
+
 
     // Handle Edit button click
     document.getElementById('edit').addEventListener('click', () => {
