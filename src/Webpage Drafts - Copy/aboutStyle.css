@@ -110,9 +110,10 @@ body {
 }
 
 .main-content {
-  flex: 1;
-  padding: 40px 20px;
-  background-color: #feedd5ff;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Allow this section to take all available space */
+  padding: 20px;
 }
 
 /* Title Section */

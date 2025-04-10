@@ -312,3 +312,109 @@ color: #f4a261;  /* Change color on hover */
 /*FOOTER END*/
 
 
+
+/* Button Styling */
+.popup-message {
+  position: fixed;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e6ffed;
+  color: #027a48;
+  border: 1px solid #a7f3d0;
+  padding: 16px 24px;
+  border-radius: 8px;
+  font-family: Lora sans-serif;
+  font-weight: 600;
+  font-style: italic;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  text-align: center;
+  max-width: 80%;
+}
+
+.popup-message.error {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+
+/* Centering the popup overlay */
+.inset-0 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.5); /* This is the overlay background, which you don't need */
+}
+
+.z-50 {
+  z-index: 50; /* Remove if you don't have other overlapping elements to control */
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+
+
+/* Center the popup using flexbox and absolute positioning */
+.popup-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  background-color: #f2a991;
+  padding: 24px 32px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+
+}
+
+.popup-btn-yes,
+.popup-btn-no {
+  font-family: Lora;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.popup-btn-yes {
+  background-color: #dc2626;
+  color: white;
+  border: none;
+}
+
+.popup-btn-no {
+  background-color: #4b5563;
+  color: white;
+  border: none;
+}
+
+.popup-btn-yes:hover {
+  background-color: #b91c1c;
+}
+
+.popup-btn-no:hover {
+  background-color: #6b7280;
+}
+
+.popup-container .flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 16px; 
+}

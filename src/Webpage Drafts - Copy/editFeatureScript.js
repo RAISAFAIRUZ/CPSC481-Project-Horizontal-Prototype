@@ -233,3 +233,27 @@ window.addEventListener('popstate', (e) => {
     });
   }
 });
+
+
+// Confirmation popup for creating a new feature page
+function showCreatePopup() {
+  const popup = document.createElement('div');
+  popup.className = 'popup-container';
+  popup.innerHTML = `
+    <p class="text-lg font-semibold mb-4">Are you sure you want to create a new feature page? This will delete the previously existing one.</p>
+    <div class="flex justify-center gap-4">
+      <button id="confirmCreateYes" class="popup-btn-yes">Yes</button>
+      <button id="confirmCreateNo" class="popup-btn-no">No</button>
+    </div>
+  `;
+  document.body.appendChild(popup);
+
+  document.getElementById('confirmCreateYes').addEventListener('click', () => {
+    window.location.href = 'editFeature.html'; 
+    popup.remove();  
+  });
+
+  document.getElementById('confirmCreateNo').addEventListener('click', () => {
+    popup.remove();
+  });
+}

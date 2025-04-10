@@ -114,48 +114,84 @@ body {
   border-color: #fca5a5;
 }
 
-/* Styling for popup containers (Cancel popup) */
+/* Centering the popup overlay */
+.inset-0 {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.5); /* This is the overlay background, which you don't need */
+}
+
+.z-50 {
+  z-index: 50; /* Remove if you don't have other overlapping elements to control */
+}
+
+.flex {
+  display: flex;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+
+
+/* Center the popup using flexbox and absolute positioning */
 .popup-container {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: white;
+  transform: translate(-50%, -50%); 
+  background-color: #f2a991;
+  padding: 24px 32px;
   border-radius: 8px;
+  text-align: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 9999;
-  text-align: center;
-  width: 300px;
-  border: 2px solid #ccc;
+
 }
 
 .popup-btn-yes,
 .popup-btn-no {
+  font-family: Lora;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
-  margin: 10px;
 }
 
 .popup-btn-yes {
-  background-color: #28a745;
+  background-color: #dc2626;
   color: white;
   border: none;
 }
 
 .popup-btn-no {
-  background-color: #dc3545;
+  background-color: #4b5563;
   color: white;
   border: none;
 }
 
 .popup-btn-yes:hover {
-  background-color: #218838;
+  background-color: #b91c1c;
 }
 
 .popup-btn-no:hover {
-  background-color: #c82333;
+  background-color: #6b7280;
+}
+
+.popup-container .flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 16px; 
 }
 
 

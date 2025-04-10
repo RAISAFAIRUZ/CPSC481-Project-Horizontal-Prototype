@@ -335,16 +335,15 @@ textarea {
 
 .upload-button,
 .remove-button {
-  background-color: #f4a261;
-  color: black;
+  font-family: Lora, sans-serif;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #cb7459;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: Lora;
-  font-size: 12px;
-  width: 120px;
-  height: 30px;
+  transition: background-color 0.3s;
   position: static; 
 }
 
@@ -360,9 +359,9 @@ textarea {
   right: 20px;
   width: 100px;
   height: 30px;
-  font-size: 12px;
-  background-color: #f4a261;
-  color: black;
+  font-size: 16px;
+  background-color: #cb7459;
+  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
