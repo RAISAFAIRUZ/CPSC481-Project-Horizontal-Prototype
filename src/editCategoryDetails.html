@@ -147,10 +147,22 @@
         }
 
         function confirmDelete() {
+            // Step 1: Remove category from categories list
             categories = categories.filter(c => c.name !== categoryName);
             localStorage.setItem("categories", JSON.stringify(categories));
+
+            // Step 2: Remove photos belonging to this category
+            let photoLibrary = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+            photoLibrary = photoLibrary.filter(photo => photo.category !== categoryName);
+            localStorage.setItem('photoLibrary', JSON.stringify(photoLibrary));
+
+            // Step 3: Remove the category-specific image list
+            localStorage.removeItem(`categoryImages_${categoryName}`);
+
+            // Step 4: Redirect back
             window.location.href = "editCategories.html";
         }
+
 
         function cancelEdit() {
             const popup = document.createElement("div");
