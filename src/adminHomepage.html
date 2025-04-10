@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="homepagestyle.css"> <!-- Include your CSS file -->
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
+        }
+
+        .popup-container {
+            background-color: #ffdddd;
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 8px;
+            color: #ff4d4d;
+            font-family: 'Lora', serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-container h2 {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .popup-buttons button {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-style: italic;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-buttons button:hover {
+            background-color: #e60000;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Placeholder for the header -->
+    <header class="navigation">
+        <!-- Logo Section -->
+        <div class="logo">
+            <a href="adminHomepage.html">
+                <img src="../Images/logo.png" alt="Website Logo">
+            </a>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+            <nav class="nav-links">
+                <a href="editShop.html">Edit Shop</a>
+                <a href="editFeature.html">Edit Feature</a>
+                <a href="edit-qa.html">Edit FAQ</a>
+                <a href="editAbout.html">Edit About</a>
+                <a href="help.html">Help</a>
+            </nav>
+
+            <!-- Sign In Button -->
+            <a href="#" class="sign-in-btn" id="signOutBtn">Sign Out</a>
+
+    </header>
+
+
+    <!-- Homepage content -->
+    <section class="article-title">
+        <div class="luminous-lens">
+            <span class="luminous-lens-text">WELCOME TO LUMINOUS LENS</span>
+        </div>
+
+        <div class="photography-description">
+            <span class="photography-description-text">Start Editing Your Photography Destination ☀️</span>
+        </div>
+
+        <div class="shop-now-section pos-abs">
+            <a href="editShop.html" class="shop-now-button">
+                <span class="shop-now-1">Edit Shop</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Image -->
+    <section class="image-section pos-abs">
+        <div class="background-image pos-abs">
+            <img src="../Images/homepage.jpg" class="pos-abs image-div bg-no-repeat fill-parent bg-cover nodeBg-1617"
+                alt="1617-ALT" />
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="divider"></div>
+
+        <!-- Left Section: Logo and Social Media Icons -->
+        <div class="left-section">
+            <div class="footer-logo">
+                <span>LUMINOUS LENS</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                    <img src="../Images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                    <img src="../Images/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                    <img src="../Images/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://www.twitter.com/" target="_blank" class="social-icon">
+                    <img src="../Images/twitter.png" alt="Twitter">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-items">
+
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="about-label">Edit Shop</span>
+                </div>
+                <div class="footer-item">
+                    <a href="editShop.html">Edit Photos</a>
+                </div>
+                <div class="footer-item">
+                    <a href="editShop.html">Add New Category</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="faq-label">Other</span>
+                </div>
+                <div class="footer-item">
+                    <a href="editFaq.html">Edit FAQ</a>
+                </div>
+                <div class="footer-item">
+                    <a href="editAbout.html">Edit About</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simple popup
+        function showPopup(message, isError = false) {
+            const container = document.createElement('div');
+            container.className = 'popup-message';
+
+            if (isError) container.classList.add('error');
+            container.textContent = message;
+            document.body.appendChild(container);
+
+            setTimeout(() => {
+                container.remove();
+                window.location.href = 'adminLogInPage.html'; // send to login page
+            }, 2000);
+
+        }
+
+        // Apply to all header links, except logo and sign-in
+
+    </script>
+
+    <script>
+        document.getElementById("signOutBtn").addEventListener("click", function (e) {
+            e.preventDefault();
+
+            // Remove any existing popup if still open
+            const existing = document.querySelector('.popup-container');
+            if (existing) existing.remove();
+
+            const popup = document.createElement("div");
+            popup.className = "popup-container";
+            popup.innerHTML = `
+        <h2>Are you sure you want to sign out?</h2>
+        <p>You'll be returned to the login page.</p>
+        <div class="popup-buttons">
+          <button id="confirmSignOut">Yes</button>
+          <button id="cancelSignOut">No</button>
+        </div>
+      `;
+            document.body.appendChild(popup);
+
+            document.getElementById("confirmSignOut").onclick = () => {
+                window.location.href = "adminHomepageSignIn.html";
+            };
+
+            document.getElementById("cancelSignOut").onclick = () => {
+                popup.remove();
+            };
+        });
+    </script>
+
+
+
+
+
+</body>
+
+</html>

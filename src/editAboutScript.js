@@ -24,7 +24,7 @@ function showCancelPopup() {
   document.body.appendChild(popup);
 
   document.getElementById('confirmCancelYes').addEventListener('click', () => {
-    window.location.href = 'adminHomepageSignIn.html';
+    window.location.href = 'adminHomepage.html';
     popup.remove();
   });
 
@@ -48,7 +48,7 @@ function showLeavePopup() {
 
   document.getElementById('confirmLeave').addEventListener('click', () => {
     isDirty = false; // prevent looping
-    window.location.href = 'adminHomepageSignIn.html'; // or history.back() if needed
+    window.location.href = 'adminHomepage.html'; // or history.back() if needed
   });
 
   document.getElementById('confirmSave').addEventListener('click', () => {
@@ -101,8 +101,8 @@ document.addEventListener('DOMContentLoaded', () => {
     isDirty = false; // Reset after successful save
 
     setTimeout(() => {
-      window.location.href = 'adminHomepageSignIn.html'; 
-    }, 2000); 
+      window.location.href = 'adminHomepage.html';
+    }, 2000);
 
   });
 
@@ -195,5 +195,5 @@ document.addEventListener('DOMContentLoaded', () => {
       showLeavePopup(); // show your custom popup
     }
   });
-  
+
 });

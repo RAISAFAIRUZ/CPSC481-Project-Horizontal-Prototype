@@ -120,8 +120,13 @@
             </div>
 
             <div class="flex justify-end gap-2">
-                <button type="button" id="save" class="bg-black text-white px-4 py-2 rounded">Save Changes</button>
-                <button type="button" id="cancel-edit" class="bg-black text-white px-4 py-2 rounded">Cancel</button>
+                <button type="button" id="save" class="bg-black text-white px-4 py-2 rounded" data-safe>
+                    Save Changes
+                </button>
+                <button type="button" id="cancel-edit" class="bg-black text-white px-4 py-2 rounded" data-safe>
+                    Cancel
+                </button>
+
             </div>
         </form>
     </div>
@@ -158,6 +163,39 @@
             select.value = photo.category;
         });
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.addEventListener("click", function (e) {
+                const el = e.target.closest("a, button");
+
+                // Only trigger if it's a valid nav element and not marked safe
+                if (!el || !el.href || el.href.includes("#") || el.hasAttribute("data-safe")) return;
+
+                if (el.closest(".popup-container")) return;
+
+                e.preventDefault(); // Block the original action
+
+                const popup = document.createElement("div");
+                popup.classList.add("popup-container");
+                popup.innerHTML = `
+                <h2>Are you sure you want to leave this page?</h2>
+                <p>Exiting now will discard unsaved changes. Save before you leave.</p>
+                <div class="popup-buttons">
+                    <button>Yes, leave</button>
+                    <button>No, stay</button>
+                </div>`;
+                document.body.appendChild(popup);
+
+                popup.querySelector("button").onclick = () => {
+                    window.location.href = el.href;
+                };
+
+                popup.querySelectorAll("button")[1].onclick = () => popup.remove();
+            });
+        });
+    </script>
+
 
 </body>
 

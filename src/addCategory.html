@@ -101,9 +101,13 @@
 
             <!-- Button section, floated right -->
             <div class="flex flex-col items-end space-y-4 mt-6 pr-4">
-                <button onclick="saveCategory()" class="bg-black text-white px-8 py-2 rounded w-52">Save
-                    Changes</button>
-                <button onclick="confirmCancel()" class="bg-black text-white px-8 py-2 rounded w-52">Cancel</button>
+                <button onclick="saveCategory()" class="bg-black text-white px-8 py-2 rounded w-52" data-safe>
+                    Save Changes
+                </button>
+                <button onclick="confirmCancel()" class="bg-black text-white px-8 py-2 rounded w-52" data-safe>
+                    Cancel
+                </button>
+
             </div>
         </div>
     </main>
@@ -172,6 +176,39 @@
             }
         }
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.addEventListener("click", function (e) {
+                const el = e.target.closest("a, button");
+
+                // Only trigger if it's a valid nav element and not marked safe
+                if (!el || !el.href || el.href.includes("#") || el.hasAttribute("data-safe")) return;
+
+                if (el.closest(".popup-container")) return;
+
+                e.preventDefault(); // Block the original action
+
+                const popup = document.createElement("div");
+                popup.classList.add("popup-container");
+                popup.innerHTML = `
+                <h2>Are you sure you want to leave this page?</h2>
+                <p>Exiting now will discard unsaved changes. Save before you leave.</p>
+                <div class="popup-buttons">
+                    <button>Yes, leave</button>
+                    <button>No, stay</button>
+                </div>`;
+                document.body.appendChild(popup);
+
+                popup.querySelector("button").onclick = () => {
+                    window.location.href = el.href;
+                };
+
+                popup.querySelectorAll("button")[1].onclick = () => popup.remove();
+            });
+        });
+    </script>
+
 </body>
 
 </html>

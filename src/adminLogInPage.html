@@ -1,30 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Sign In</title>
     <link rel="stylesheet" href="signInStyle.css"> <!-- Use the same CSS file for consistency -->
 </head>
+
 <body>
     <!-- Placeholder for the header -->
     <header class="navigation">
         <!-- Logo Section -->
         <div class="logo">
-          <a href="adminHomepage.html">
-            <img src="../Images/logo.png" alt="Website Logo">
-          </a>
+            <a href="adminHomepage.html">
+                <img src="../Images/logo.png" alt="Website Logo">
+            </a>
         </div>
-        
+
         <!-- Navigation Links -->
         <nav class="nav-links">
-          <a href="adminLogInPage.html">Edit Feature</a>
-          <a href="adminLogInPage.html"> Edit Shop</a>
-          <a href="adminLogInPage.html">Edit FAQ</a>
-          <a href="adminLogInPage.html">Edit About</a>
-          <a href="adminLogInPage.html">Help</a>
+            <a href="feature.html">Feature</a>
+            <a href="shop.html">Shop</a>
+            <a href="faq.html">FAQ</a>
+            <a href="about.html">About</a>
+            <a href="cart.html">Cart</a>
+
         </nav>
-    
+
         <!-- Sign In Button -->
         <a href="adminLogInPage.html" class="sign-in-btn">Sign In</a>
     </header>
@@ -34,8 +37,8 @@
 
         <div class="sign-in-container">
             <h1>Sign In</h1>
-            
-            <form id="signInForm" action="adminHomepageSignIn.html" method="POST" class="sign-in-form">
+
+            <form id="signInForm" onsubmit="handleAdminLogin(event)" class="sign-in-form">
                 <div class="form-group">
                     <label for="username">Email</label>
                     <input type="email" id="username" name="username" required placeholder="Enter your email">
@@ -50,6 +53,7 @@
                     <button type="submit">Sign In</button>
                 </div>
             </form>
+
         </div>
 
     </div>
@@ -93,7 +97,7 @@
                     <a href="editShop.html">Add New Category</a>
                 </div>
             </div>
-    
+
             <div class="footer-column">
                 <div class="footer-item">
                     <span class="faq-label">Other</span>
@@ -106,43 +110,72 @@
                 </div>
             </div>
         </div>
-    </section>   
+    </section>
 
-  <script src="editAboutScript.js"></script> 
+    <script src="editAboutScript.js"></script>
 
-  <script>
-    // Simple popup
-    function showPopup(message, isError = false) {
-      const container = document.createElement('div');
-      container.className = 'popup-message';
-      if (isError) container.classList.add('error');
-      container.textContent = message;
-      document.body.appendChild(container);
-      setTimeout(() => {
-        container.remove();
-        window.location.href = 'adminLogInPage.html'; // send to login page
-      }, 2000);
-    }
-  
-    // Apply to all header links, except logo and sign-in
-    document.addEventListener('DOMContentLoaded', () => {
-      const headerLinks = document.querySelectorAll('header a, .footer-items a');
-  
-      headerLinks.forEach(link => {
-        // Exclude logo and sign-in links
-        if (link.href.includes('adminHomepage.html') || link.classList.contains('sign-in-btn')) {
-          return;
+    <script>
+        // Simple popup
+        function showPopup(message, isError = false) {
+            const container = document.createElement('div');
+            container.className = 'popup-message';
+            if (isError) container.classList.add('error');
+            container.textContent = message;
+            document.body.appendChild(container);
+            setTimeout(() => {
+                container.remove();
+                window.location.href = 'adminLogInPage.html'; // send to login page
+            }, 2000);
         }
-  
-        link.addEventListener('click', (e) => {
-          e.preventDefault(); // Stop default link behavior
-          showPopup('Please sign in to access this page.', true);
+
+        // Apply to all header links, except logo and sign-in
+        document.addEventListener('DOMContentLoaded', () => {
+            const headerLinks = document.querySelectorAll('header a, .footer-items a');
+
+            headerLinks.forEach(link => {
+                // Exclude logo and sign-in links
+                if (link.href.includes('adminHomepage.html') || link.classList.contains('sign-in-btn')) {
+                    return;
+                }
+
+                link.addEventListener('click', (e) => {
+                    e.preventDefault(); // Stop default link behavior
+                    showPopup('Please sign in to access this page.', true);
+                });
+            });
         });
-      });
-    });
-  </script>
-  
-  
-  
+    </script>
+
+    <script>
+        function handleAdminLogin(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!email || !password) {
+                showPopup("Please fill in both email and password.", true);
+                return;
+            }
+
+            // ✅ Redirect to adminHomepage.html
+            window.location.href = "adminHomepage.html";
+        }
+
+        function showPopup(message, isError = false) {
+            const container = document.createElement('div');
+            container.className = 'popup-container';
+            if (isError) container.classList.add('error');
+            container.innerHTML = `<h2>${message}</h2>`;
+            document.body.appendChild(container);
+
+            setTimeout(() => container.remove(), 2000);
+        }
+    </script>
+
+
+
+
 </body>
+
 </html>
