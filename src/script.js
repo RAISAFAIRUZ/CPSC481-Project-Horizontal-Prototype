@@ -108,11 +108,11 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7LgArvZLks4juAOMNxBWGK8XvibkhVUtaEP0w6",
         category: "Ocean",
-        description: "A stunning photo of sky.",
+        description: "This photo shows a beautiful waterfall in Hawaii with trees and a rainbow. It looks peaceful and full of natural beauty. ",
         location: "Hawaii",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the essence of sky.",
+            "Pure example of how calm and magical nature can be.",
         tags: ["Hawaii", "Waterfall", "Rainbow", "Sky", "Trees"],
     },
     {
@@ -122,12 +122,12 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7LH6FzmLdjNGPfSm1Z4Du3O8czT2dxgBqivK5t",
         category: "Tropical",
-        description: "Stunning Hawaii island overlook capturing a rainbow.",
+        description: "This is a top-down photo of a man-made island in Dubai. You can see clean water and beautiful buildings.",
         location: "Dubai",
         size: "1000 x1000",
         motivation:
-            "This photo was taken during a helicopter tour over the island of Maui.",
-        tags: ["Dubai", "Ocean", "Sky"],
+            "This picutre was taken to show Dubai's creative city planning.",
+        tags: ["Dubai", "Ocean", "Island", "CityView", "Modern", "Travel"],
     },
     {
         id: "3",
@@ -136,12 +136,12 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7L5XPzmUqniWv0ZODU3oygjPBI9fbmYd7TRlM8",
         category: "City Life",
-        description: "Majestic mountains in Banff National Park.",
+        description: "This photo shows the tallest building in the world with palm trees around. It shines bright and looks powerful.",
         location: "Dubai",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the beauty of Banff",
-        tags: ["Dubai", "Building", "Lights", "City Life"],
+            "This photo was taken to capture the beauty and height of Burj Khalifa.",
+        tags: ["Dubai", "BurjKhalifa", "NightLights", "CityLife", "Skyscraper"],
     },
     {
         id: "4",
@@ -150,11 +150,11 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7LRAaaDkqG7UIWClin6VxJfpZbK1YD0qkX2PHO",
         category: "Ocean",
-        description: "Ancient ruins in Mexico",
+        description: "These are old rocks and ruins by the ocean in Mexico. Just an another peaceful view. ",
         location: "Mexico",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the history of Mexico",
+            "This photo was taken to capture the history and nature of Mexico",
         tags: ["Hawaii", "Mountain", "Rainbow"],
     },
     {
@@ -164,12 +164,12 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7L2hqpA5S3b5SvR4ueOxJnZqadDKrBwk97zyF6",
         category: "Tropical",
-        description: "Ancient ruins in Mexico",
+        description: "A calm lake reflects tall mountains under a starry night. It feels cold, peaceful, and magical.",
         location: "Banff",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the history of Mexico",
-        tags: ["Banff", "Mountain", "Rainbow"],
+            "This photo was taken to show the quiet beauty of Banff at night",
+        tags: ["Banff", "Mountains", "NightSky", "Stars", "LakeView", "NatureLovers"],
     },
     {
         id: "6",
@@ -178,12 +178,12 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7LfVxG2bLIzWDFBPM5LU2vH4VkgtTQ3ocdwrJ7",
         category: "Mountains",
-        description: "Ancient ruins in Mexico",
+        description: "Clear water and sharp mountains under a blue sky. You can see the reflection of trees and peaks.",
         location: "Banff",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the history of Mexico",
-        tags: ["Banff", "Mountain", "Rocks"],
+            "This picture was taken to show the fresh and clean nature of Banff.",
+        tags: ["Banff", "Mountains", "Reflection", "Nature", "Travel", "Peaceful"],
     },
     {
         id: "7",
@@ -192,12 +192,12 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7L5XLVXSmniWv0ZODU3oygjPBI9fbmYd7TRlM8",
         category: "Ocean",
-        description: "Beautiful Sunset",
+        description: "The sun is setting behind palm trees over the ocean. The light turns the water golden.",
         location: "Hawaii",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the history of Mexico",
-        tags: ["Hawaii", "Mountain", "Rocks", "Sunset", "Sky"],
+            "This photo was taken to capture a relaxing sunset in Hawaii. ",
+        tags: ["Hawaii", "Sunset", "PalmTrees", "OceanView", "Relaxing", "Tropical"],
     },
     {
         id: "8",
@@ -206,12 +206,12 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7L0DHtL7YUtk4RJrOelXfSDTdq1NMpy8Khzc0W",
         category: "City Life",
-        description: "Best night in the city",
+        description: "A colorful night fair with a big Ferris wheel and tents.",
         location: "Calgary",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the history of Mexico",
-        tags: ["City", "Life", "Night", "House", "Sky"],
+            "This photo shows the fun and joy of Calgary's night life.",
+        tags: ["CityLife", "Carnival", "FerrisWheel", "Calgary", "Nightfun", "Canada"],
     },
     {
         id: "9",
@@ -220,12 +220,12 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7L69DKHJe3qvscJQPF8DmC1p9UXbhgoTft7l2V",
         category: "Ocean",
-        description: "Best beachday",
+        description: "Soft ocean waves touch the beach under a cloudy sky. You can see two small islands in the distance.",
         location: "Hawaii",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the history of Mexico",
-        tags: ["Beach", "Hawaii", "Ocean", "Sky"],
+            "This photo was taken to show the calm waters of Hawaii.",
+        tags: ["Beach", "Hawaii", "Ocean", "IslandView", "Relax", "WaterLovers"],
     },
     {
         id: "10",
@@ -234,12 +234,12 @@ const PRODUCTS = [
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7LIh7fIIsVG0KYBnNJ8MvCuPtyckWR3DLZrHfl",
         category: "Mountains",
-        description: "Best beachday",
+        description: "The sky turns purple and pinks as the sun sets. Palm trees and waves complete the peaceful scene.",
         location: "Diu",
         size: "1000 x1000",
         motivation:
-            "This photo was taken to capture the history of Diu",
-        tags: ["Beach", "Diu", "Ocean", "Sky"],
+            "This picture was taken to show the colors of a tropical sunset.",
+        tags: ["Sunset", "PurpleSky", "Tropical", "PalmTrees", "Ocean", "RelaxingView"],
     }
 
 
