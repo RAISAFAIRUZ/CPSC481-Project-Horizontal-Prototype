@@ -137,20 +137,28 @@
     <!-- ✅ Dynamic Category Dropdown Script -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const index = urlParams.get('index');
+            const photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+            const photo = photos[index];
+
             const select = document.getElementById('category');
             const savedCategories = JSON.parse(localStorage.getItem('categories')) || [];
 
-            // Reset and add default option
+            // Populate category dropdown
             select.innerHTML = '<option value="">Select Category</option>';
-
             savedCategories.forEach(cat => {
                 const option = document.createElement('option');
                 option.value = cat.name;
                 option.textContent = cat.name;
                 select.appendChild(option);
             });
+
+            // ✅ Pre-select the correct category
+            select.value = photo.category;
         });
     </script>
+
 </body>
 
 </html>
