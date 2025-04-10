@@ -1388,3 +1388,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+window.addEventListener("popstate", function () {
+    history.back(); // This lets the browser go back to the previous page
+});
