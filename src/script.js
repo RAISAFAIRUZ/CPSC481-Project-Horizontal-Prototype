@@ -121,7 +121,7 @@ const PRODUCTS = [
         price: 3.99,
         imageUrl:
             "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7LH6FzmLdjNGPfSm1Z4Du3O8czT2dxgBqivK5t",
-        category: "Ocean",
+        category: "Tropical",
         description: "Stunning Hawaii island overlook capturing a rainbow.",
         location: "Dubai",
         size: "1000 x1000",
@@ -184,6 +184,62 @@ const PRODUCTS = [
         motivation:
             "This photo was taken to capture the history of Mexico",
         tags: ["Banff", "Mountain", "Rocks"],
+    },
+    {
+        id: "7",
+        name: "Hawaii Sunset",
+        price: 14.99,
+        imageUrl:
+            "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7L5XLVXSmniWv0ZODU3oygjPBI9fbmYd7TRlM8",
+        category: "Ocean",
+        description: "Beautiful Sunset",
+        location: "Hawaii",
+        size: "1000 x1000",
+        motivation:
+            "This photo was taken to capture the history of Mexico",
+        tags: ["Hawaii", "Mountain", "Rocks", "Sunset", "Sky"],
+    },
+    {
+        id: "8",
+        name: "Calgary",
+        price: 14.99,
+        imageUrl:
+            "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7L0DHtL7YUtk4RJrOelXfSDTdq1NMpy8Khzc0W",
+        category: "City Life",
+        description: "Best night in the city",
+        location: "Calgary",
+        size: "1000 x1000",
+        motivation:
+            "This photo was taken to capture the history of Mexico",
+        tags: ["City", "Life", "Night", "House", "Sky"],
+    },
+    {
+        id: "9",
+        name: "Hawaii Waters",
+        price: 14.99,
+        imageUrl:
+            "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7L69DKHJe3qvscJQPF8DmC1p9UXbhgoTft7l2V",
+        category: "Ocean",
+        description: "Best beachday",
+        location: "Hawaii",
+        size: "1000 x1000",
+        motivation:
+            "This photo was taken to capture the history of Mexico",
+        tags: ["Beach", "Hawaii", "Ocean", "Sky"],
+    },
+    {
+        id: "10",
+        name: "Purple Sunset",
+        price: 14.99,
+        imageUrl:
+            "https://w8olmmxvkm.ufs.sh/f/O1k8BV0YGt7LIh7fIIsVG0KYBnNJ8MvCuPtyckWR3DLZrHfl",
+        category: "Mountains",
+        description: "Best beachday",
+        location: "Diu",
+        size: "1000 x1000",
+        motivation:
+            "This photo was taken to capture the history of Diu",
+        tags: ["Beach", "Diu", "Ocean", "Sky"],
     }
 
 
@@ -640,6 +696,8 @@ function initShopPage() {
             }
         });
     }
+
+
 
     const categories = [
         {
