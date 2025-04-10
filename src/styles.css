@@ -109,16 +109,7 @@ form button {
 }
 
 /* Popup styles for consistency */
-.popup-container {
-    background-color: #ffdddd;
-    border: 2px solid #ff4d4d;
-    padding: 20px;
-    max-width: 500px;
-    margin: 0 auto;
-    border-radius: 8px;
-    color: #ff4d4d;
-    font-family: 'Lora', serif;
-}
+
 
 .popup-container h2 {
     font-weight: bold;

@@ -142,5 +142,20 @@ function handleSubmit(e) {
 
 
 function cancelUpload() {
-    window.location.href = '/src/index.html';
+    // Remove any existing popup
+    const existing = document.querySelector('.popup-container');
+    if (existing) existing.remove();
+
+    const popup = document.createElement('div');
+    popup.classList.add('popup-container');
+    popup.innerHTML = `
+        <h2>Are you sure you want to cancel?</h2>
+        <p>All unsaved changes will be lost.</p>
+        <div class="popup-buttons">
+            <button onclick="window.location.href='index.html'">Yes, cancel</button>
+            <button onclick="this.closest('.popup-container').remove()">No, stay</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
 }
+

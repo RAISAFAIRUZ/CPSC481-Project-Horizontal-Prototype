@@ -95,7 +95,8 @@
 
                 // Set category description
                 const match = categories.find(c => c.name === selected);
-                descBox.textContent = match ? match.description : '';
+                descBox.textContent = `Category Description: ${match.description}`;
+
 
                 renderPhotos(filtered);
             });
