@@ -1,4 +1,4 @@
-const layoutSelect = document.getElementById("layoutSelector"); 
+const layoutSelect = document.getElementById("layoutSelector");
 const layoutPreview = document.getElementById("layoutPreview");
 const buttonContainer = document.getElementById("buttonContainer");
 
@@ -7,11 +7,11 @@ let isDirty = false; // Track unsaved changes
 layoutSelect.addEventListener("change", () => {
   isDirty = true;
   const count = parseInt(layoutSelect.value);
-  layoutPreview.innerHTML = ""; 
+  layoutPreview.innerHTML = "";
 
   if (count === 0) {
     layoutPreview.innerHTML = "";
-    buttonContainer.style.display = "none"; 
+    buttonContainer.style.display = "none";
     return;
   }
 
@@ -43,58 +43,58 @@ function createDropZone(index, size) {
 
   const fileInput = document.createElement("input");
   fileInput.type = "file";
-  fileInput.accept = "image/*";  
-  fileInput.style.display = "none";  
+  fileInput.accept = "image/*";
+  fileInput.style.display = "none";
 
   dropZone.appendChild(fileInput);
 
   dropZone.addEventListener("click", () => {
-    fileInput.click();  
+    fileInput.click();
   });
 
   dropZone.addEventListener("dragover", (e) => {
     e.preventDefault();
-    dropZone.style.backgroundColor = "#e0f7fa"; 
+    dropZone.style.backgroundColor = "#e0f7fa";
   });
 
   dropZone.addEventListener("dragleave", () => {
-    dropZone.style.backgroundColor = "#f9f9f9";  
+    dropZone.style.backgroundColor = "#f9f9f9";
   });
 
   dropZone.addEventListener("drop", (e) => {
-    e.preventDefault(); 
-    const file = e.dataTransfer.files[0];  
+    e.preventDefault();
+    const file = e.dataTransfer.files[0];
 
     if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();  
+      const reader = new FileReader();
       reader.onload = (event) => {
-        const img = new Image(); 
-        img.src = event.target.result;  
-        img.style.width = "100%"; 
-        img.style.height = "100%";  
-        dropZone.innerHTML = "";  
-        dropZone.appendChild(img);  
+        const img = new Image();
+        img.src = event.target.result;
+        img.style.width = "100%";
+        img.style.height = "100%";
+        dropZone.innerHTML = "";
+        dropZone.appendChild(img);
         isDirty = true;
       };
-      reader.readAsDataURL(file); 
+      reader.readAsDataURL(file);
     }
   });
 
   fileInput.addEventListener("change", () => {
-    const file = fileInput.files[0];  
+    const file = fileInput.files[0];
 
     if (file && file.type.startsWith("image/")) {
-      const reader = new FileReader();  
+      const reader = new FileReader();
       reader.onload = (event) => {
-        const img = new Image();  
-        img.src = event.target.result;  
-        img.style.width = "100%";  
-        img.style.height = "100%";  
-        dropZone.innerHTML = ""; 
-        dropZone.appendChild(img);  
+        const img = new Image();
+        img.src = event.target.result;
+        img.style.width = "100%";
+        img.style.height = "100%";
+        dropZone.innerHTML = "";
+        dropZone.appendChild(img);
         isDirty = true;
       };
-      reader.readAsDataURL(file);  
+      reader.readAsDataURL(file);
     }
   });
 
@@ -129,12 +129,12 @@ function showCancelPopup() {
   document.body.appendChild(popup);
 
   document.getElementById('confirmCancelYes').addEventListener('click', () => {
-    window.location.href = 'adminHomepageSignIn.html'; 
+    window.location.href = 'editFeautureMain.html';
     popup.remove();
   });
 
   document.getElementById('confirmCancelNo').addEventListener('click', () => {
-    popup.remove(); 
+    popup.remove();
   });
 }
 
@@ -183,8 +183,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const uploadedFiles = dropArea.querySelectorAll('img');
 
     if (!featureDescription && uploadedFiles.length !== numberOfPictures) {
-      showPopup('Please fill out description field and upload images.', true); 
-      return; 
+      showPopup('Please fill out description field and upload images.', true);
+      return;
     }
 
     if (featureDescription && uploadedFiles.length === numberOfPictures) {
@@ -192,8 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
       isDirty = false;
 
       setTimeout(() => {
-        window.location.href = 'adminHomepageSignIn.html'; 
-      }, 2000); 
+        window.location.href = 'editFeatureMain.html';
+      }, 2000);
 
       return;
     } else {
@@ -229,7 +229,7 @@ window.addEventListener('popstate', (e) => {
     e.preventDefault();
     history.pushState(null, null, window.location.href);  // Keep user on the page
     showLeavePopup(() => {
-      window.location.href = 'adminHomepageSignIn.html'; // Redirect after confirmation
+      window.location.href = 'adminHomepage.html'; // Redirect after confirmation
     });
   }
 });
