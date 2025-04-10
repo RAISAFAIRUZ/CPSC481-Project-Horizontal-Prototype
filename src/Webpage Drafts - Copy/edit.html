@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Photo</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Fonts and Custom Styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
+        }
+
+        .popup-container {
+            background-color: #ffdddd;
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 8px;
+            color: #ff4d4d;
+            font-family: 'Lora', serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            width: 80%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-container h2 {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .popup-buttons button {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-style: italic;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-buttons button:hover {
+            background-color: #e60000;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Include header -->
+    <div w3-include-html="header.html"></div>
+
+    <!-- Main content -->
+    <div class="max-w-7xl mx-auto p-8 flex flex-col gap-8">
+        <h1 class="text-3xl font-bold">Edit Photo</h1>
+
+        <form id="edit-form" class="flex flex-col gap-8">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="flex flex-col items-center border border-gray-400 bg-white p-6 rounded-xl w-full lg:w-1/3">
+                    <img id="photo" src="" alt="Photo" class="w-full h-auto rounded-lg">
+                </div>
+
+                <div class="w-full lg:w-2/3 flex flex-col gap-4">
+                    <div>
+                        <label class="block mb-1">Name</label>
+                        <input type="text" id="name" placeholder="Name" class="w-full p-3 border rounded">
+                    </div>
+                    <div>
+                        <label class="block mb-1">Place</label>
+                        <input type="text" id="place" placeholder="Place" class="w-full p-3 border rounded">
+                    </div>
+                    <div>
+                        <label class="block mb-1">Price</label>
+                        <input type="text" id="price" placeholder="$3.99" class="w-full p-3 border rounded">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-4">
+                <div>
+                    <label class="block mb-1">Description</label>
+                    <textarea id="description" placeholder="Description" class="w-full p-3 border rounded"></textarea>
+                </div>
+                <div>
+                    <label class="block mb-1">Motivation</label>
+                    <textarea id="motivation" placeholder="Motivation" class="w-full p-3 border rounded"></textarea>
+                </div>
+                <div>
+                    <label class="block mb-1">Hashtags</label>
+                    <input type="text" id="hashtags" placeholder="#Hashtags" class="w-full p-3 border rounded">
+                </div>
+                <div>
+                    <label class="block mb-1">Category</label>
+                    <select id="category" class="w-full p-3 border rounded">
+                        <option value="">Select Category</option>
+                        <!-- Options will be loaded dynamically -->
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-2">
+                <button type="button" id="save" class="bg-black text-white px-4 py-2 rounded">Save Changes</button>
+                <button type="button" id="cancel-edit" class="bg-black text-white px-4 py-2 rounded">Cancel</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Include footer -->
+    <div w3-include-html="footer.html"></div>
+
+    <!-- Scripts -->
+    <script src="headerFooter.js"></script>
+    <script>includeHTML();</script>
+    <script src="edit.js"></script>
+
+    <!-- ✅ Dynamic Category Dropdown Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const index = urlParams.get('index');
+            const photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+            const photo = photos[index];
+
+            const select = document.getElementById('category');
+            const savedCategories = JSON.parse(localStorage.getItem('categories')) || [];
+
+            // Populate category dropdown
+            select.innerHTML = '<option value="">Select Category</option>';
+            savedCategories.forEach(cat => {
+                const option = document.createElement('option');
+                option.value = cat.name;
+                option.textContent = cat.name;
+                select.appendChild(option);
+            });
+
+            // ✅ Pre-select the correct category
+            select.value = photo.category;
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Categories</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div w3-include-html="header.html"></div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto p-8 flex flex-col gap-12">
+        <h1 class="text-3xl font-bold mb-1">Edit Category Collection</h1>
+
+
+        <!-- Section 1: Edit Categories -->
+        <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="flex-1">
+                <h2 class="text-xl font-semibold">Edit Catagories</h2>
+                <p class="text-sm text-gray-600">Add, Delete, or Edit Existing Catagories</p>
+                <button onclick="window.location.href='selectCategoryToEdit.html'"
+                    class="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Edit</button>
+            </div>
+            <div class="grid grid-cols-2 gap-3 w-[380px] md:w-[380px]">
+                <img src="../Images/BanffMountains.jpg" alt="Image 1" class="rounded-xl w-full h-32 object-cover">
+                <img src="../Images/Burj.jpg" alt="Image 2" class="rounded-xl w-full h-32 object-cover">
+                <img src="../Images/HawaiiRainbow.jpg" alt="Image 3" class="rounded-xl w-full h-32 object-cover">
+                <img src="../Images/PurpleSunset.jpg" alt="Image 4" class="rounded-xl w-full h-32 object-cover">
+            </div>
+        </div>
+
+        <!-- Section 2: Create New Category -->
+        <div class="flex flex-col md:flex-row items-start gap-6">
+            <div class="flex-1">
+                <h2 class="text-xl font-semibold">Create New Category</h2>
+                <p class="text-sm text-gray-600">Add New Category</p>
+                <button onclick="window.location.href='addCategory.html'"
+                    class="mt-4 bg-black text-white px-4 py-2 rounded hover:bg-gray-800">Edit</button>
+            </div>
+            <img src="../Images/UploadNew.jpg" alt="Upload Placeholder"
+                class="rounded-xl w-full md:w-96 h-56 object-cover" />
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div w3-include-html="footer.html"></div>
+
+    <script src="headerFooter.js"></script>
+    <script>includeHTML();</script>
+</body>
+
+</html>
+
+</html>

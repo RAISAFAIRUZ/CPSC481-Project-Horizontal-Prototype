@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Category</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
+        }
+
+        .popup-container {
+            font-family: 'Lora', serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background-color: #ffdddd;
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            border-radius: 8px;
+            color: #ff4d4d;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-container.success {
+            background-color: #ddffdd;
+            border-color: #33cc33;
+            color: #228822;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .popup-buttons button {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-style: italic;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-buttons.success button {
+            background-color: #33cc33;
+        }
+
+        .popup-buttons button:hover {
+            background-color: #e60000;
+        }
+
+        .popup-buttons.success button:hover {
+            background-color: #29a329;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <div w3-include-html="header.html"></div>
+
+    <main class="flex-1 p-8 pl-20 max-w-7xl">
+        <h1 class="text-3xl font-bold mb-6">Edit Category Details</h1>
+
+        <label class="block mb-2 font-semibold">Name</label>
+        <input id="catName" class="w-full p-3 mb-6 border border-black rounded" />
+
+        <label class="block mb-2 font-semibold">Description</label>
+        <input id="catDesc" class="w-full p-3 mb-6 border border-black rounded" />
+
+        <div class="flex justify-between items-start mt-8">
+            <!-- Delete on left -->
+            <div>
+                <button onclick="deleteCategory()" class="bg-red-600 text-white px-6 py-2 rounded w-48">Delete
+                    Category</button>
+            </div>
+
+            <!-- Save/Cancel on right -->
+            <div class="flex flex-col items-end gap-4">
+                <button onclick="saveCategory()" class="bg-black text-white px-6 py-2 rounded w-48">Save
+                    Changes</button>
+                <button onclick="cancelEdit()" class="bg-black text-white px-6 py-2 rounded w-48">Cancel</button>
+            </div>
+        </div>
+    </main>
+
+    <div w3-include-html="footer.html"></div>
+
+    <script src="headerFooter.js"></script>
+    <script>
+        includeHTML();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const categoryName = urlParams.get('name');
+        let categories = JSON.parse(localStorage.getItem('categories')) || [];
+        let currentCategory = categories.find(c => c.name === categoryName);
+
+        window.onload = () => {
+            if (!currentCategory) {
+                showPopup("Category not found.");
+                return;
+            }
+            document.getElementById("catName").value = currentCategory.name;
+            document.getElementById("catDesc").value = currentCategory.description;
+        };
+
+        function saveCategory() {
+            const name = document.getElementById("catName").value.trim();
+            const desc = document.getElementById("catDesc").value.trim();
+
+            if (!name || !desc) {
+                showPopup("Name and Description cannot be empty.");
+                return;
+            }
+
+            currentCategory.name = name;
+            currentCategory.description = desc;
+            localStorage.setItem("categories", JSON.stringify(categories));
+            showPopup("Changes saved successfully!", true);
+        }
+
+        function deleteCategory() {
+            const popup = document.createElement("div");
+            popup.classList.add("popup-container");
+            popup.innerHTML = `
+        <h2>Are you sure you want to delete this category?</h2>
+        <p>This action cannot be undone.</p>
+        <div class="popup-buttons">
+          <button onclick="confirmDelete()">Yes, delete</button>
+          <button onclick="this.closest('.popup-container').remove()">No, cancel</button>
+        </div>`;
+            document.body.appendChild(popup);
+        }
+
+        function confirmDelete() {
+            // Step 1: Remove category from categories list
+            categories = categories.filter(c => c.name !== categoryName);
+            localStorage.setItem("categories", JSON.stringify(categories));
+
+            // Step 2: Remove photos belonging to this category
+            let photoLibrary = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+            photoLibrary = photoLibrary.filter(photo => photo.category !== categoryName);
+            localStorage.setItem('photoLibrary', JSON.stringify(photoLibrary));
+
+            // Step 3: Remove the category-specific image list
+            localStorage.removeItem(`categoryImages_${categoryName}`);
+
+            // Step 4: Redirect back
+            window.location.href = "editCategories.html";
+        }
+
+
+        function cancelEdit() {
+            const popup = document.createElement("div");
+            popup.classList.add("popup-container");
+            popup.innerHTML = `
+        <h2>Are you sure you want to cancel?</h2>
+        <p>All unsaved changes will be lost.</p>
+        <div class="popup-buttons">
+          <button onclick="window.location.href='editCategories.html'">Yes, cancel</button>
+          <button onclick="this.closest('.popup-container').remove()">No, stay</button>
+        </div>`;
+            document.body.appendChild(popup);
+        }
+
+        function showPopup(message, success = false) {
+            const popup = document.createElement("div");
+            if (document.querySelector('.popup-container')) return;
+            popup.classList.add("popup-container");
+            if (success) popup.classList.add("success");
+            popup.innerHTML = `
+        <h2>${message}</h2>
+        <div class="popup-buttons ${success ? 'success' : ''}">
+          <button onclick="handlePopupClose(${success})">OK</button>
+        </div>`;
+            document.body.appendChild(popup);
+        }
+
+        function handlePopupClose(success) {
+            document.querySelector('.popup-container')?.remove();
+            if (success) {
+                window.location.href = "editCategories.html";
+            }
+        }
+    </script>
+</body>
+
+</html>

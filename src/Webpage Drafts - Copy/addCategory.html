@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Category</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="headerFooterStyle.css" />
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
+        }
+
+        .popup-container {
+            font-family: 'Lora', serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background-color: #ffdddd;
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            border-radius: 8px;
+            color: #ff4d4d;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .popup-container.success {
+            background-color: #ddffdd;
+            border-color: #33cc33;
+            color: #228822;
+        }
+
+        .popup-container h2 {
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .popup-buttons button {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-style: italic;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-buttons.success button {
+            background-color: #33cc33;
+        }
+
+        .popup-buttons button:hover {
+            background-color: #e60000;
+        }
+
+        .popup-buttons.success button:hover {
+            background-color: #29a329;
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col">
+    <!-- Header -->
+    <div w3-include-html="header.html"></div>
+
+    <main class="flex-1 px-20 py-12">
+        <h1 class="text-4xl font-bold mb-2">Add New Category</h1>
+        <p class="mb-10 text-lg">Fill in the following boxes.</p>
+
+        <!-- Main form container aligned left -->
+        <div class="w-full">
+            <!-- Input fields full width -->
+            <div class="mb-10">
+                <label for="categoryName" class="block mb-2 text-lg">Enter Name</label>
+                <input type="text" id="categoryName" class="w-full p-3 border border-black rounded text-base max-w-4xl"
+                    placeholder="e.g. Mountains" />
+            </div>
+
+            <div class="mb-10">
+                <label for="categoryDescription" class="block mb-2 text-lg">Enter Description</label>
+                <input type="text" id="categoryDescription"
+                    class="w-full p-3 border border-black rounded text-base max-w-4xl"
+                    placeholder="e.g. Photography from the mountains" />
+            </div>
+
+            <!-- Button section, floated right -->
+            <div class="flex flex-col items-end space-y-4 mt-6 pr-4">
+                <button onclick="saveCategory()" class="bg-black text-white px-8 py-2 rounded w-52">Save
+                    Changes</button>
+                <button onclick="confirmCancel()" class="bg-black text-white px-8 py-2 rounded w-52">Cancel</button>
+            </div>
+        </div>
+    </main>
+
+
+
+    <!-- Footer -->
+    <footer w3-include-html="footer.html"></footer>
+
+    <script src="headerFooter.js"></script>
+    <script>
+        includeHTML();
+
+        function saveCategory() {
+            const name = document.getElementById('categoryName').value.trim();
+            const desc = document.getElementById('categoryDescription').value.trim();
+
+            if (!name || !desc) {
+                showPopup("All fields must be filled out.");
+                return;
+            }
+
+            let categories = JSON.parse(localStorage.getItem('categories')) || [];
+            categories.push({ name, description: desc });
+            localStorage.setItem('categories', JSON.stringify(categories));
+
+            showPopup("Success! All changes have been saved.", true);
+            let categoryOptions = JSON.parse(localStorage.getItem('categoryOptions')) || [];
+            if (!categoryOptions.includes(name)) {
+                categoryOptions.push(name);
+                localStorage.setItem('categoryOptions', JSON.stringify(categoryOptions));
+            }
+
+        }
+
+        function confirmCancel() {
+            const popup = document.createElement('div');
+            popup.classList.add('popup-container');
+            popup.innerHTML = `
+        <h2>Are you sure you want to cancel?</h2>
+        <p>All unsaved changes will be lost.</p>
+        <div class="popup-buttons">
+          <button onclick="window.location.href='editCategories.html'">Yes, cancel</button>
+          <button onclick="this.closest('.popup-container').remove()">No, stay</button>
+        </div>`;
+            document.body.appendChild(popup);
+        }
+
+        function showPopup(message, isSuccess = false) {
+            const popup = document.createElement('div');
+            popup.classList.add('popup-container');
+            if (isSuccess) popup.classList.add('success');
+            popup.innerHTML = `
+        <h2>${message}</h2>
+        <div class="popup-buttons ${isSuccess ? 'success' : ''}">
+          <button onclick="handlePopupClose(${isSuccess})">OK</button>
+        </div>`;
+            document.body.appendChild(popup);
+        }
+
+        function handlePopupClose(isSuccess) {
+            const popup = document.querySelector('.popup-container');
+            popup.remove();
+            if (isSuccess) {
+                window.location.href = 'editCategories.html';
+            }
+        }
+    </script>
+</body>
+
+</html>
