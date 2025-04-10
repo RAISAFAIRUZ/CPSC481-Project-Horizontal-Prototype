@@ -164,8 +164,8 @@ nav ul li a {
 /* Page Layout */
 .page {
   display: none;
-  padding: 40px 20px;
-  background-color: #f9ecd2;
+  padding: 150px 150px;
+  background-color: #feedd5;
   min-height: calc(100vh - 180px);
 }
 
