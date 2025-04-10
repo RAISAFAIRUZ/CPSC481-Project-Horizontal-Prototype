@@ -1,0 +1,501 @@
+/* Import Lora Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Reset and general styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%; /* Ensure html and body take full height */
+  margin: 0;    /* Remove default margin */
+}
+
+
+/*Header */
+.navigation {
+  display: flex;
+  align-items: center;            /* Vertically center items */
+  justify-content: flex-end;      /* Align everything to the right */
+  background: #feedd5ff;        /* Beige background for the header */
+  padding: 10px 20px;             /* Adjusted padding */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;         /* Include padding in total width/height */
+  margin-bottom: 0;               /* Ensure there’s no extra space below the header */
+  height: 60px; 
+}
+
+/* Logo Section */
+.logo {
+  margin-right: auto;               /* Pushes the logo to the left, leaving space for other items */
+}
+
+/* Logo Section */
+.logo img {
+    width: 90px;                   /* Set width */
+    height: auto;                  /* Maintain aspect ratio */
+    margin-right: 5px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 20px;                       /* Space between each link */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;                    /* color for text */
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f4a261;                  /* Color change when hovered */
+}
+
+/* Sign In Button */
+.sign-in-btn {
+  background: #f4a261;            /* Button background */
+  color: black;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  text-decoration: none;           /* Remove underline */
+  margin-left: 20px;               /* Space between the last link and the button */
+}
+
+.sign-in-btn:hover {
+  background: #e76f51;             /* Darken the button when hovered */
+}
+
+/* Header End */
+
+
+/* Main container */
+/* General container styling */
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+
+  max-width: 1200px;
+
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #feedd5ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+  box-sizing: border-box;
+  position: relative; 
+
+}
+
+.main-content {
+  flex: 1;
+  padding: 40px 20px;
+  background-color: #feedd5ff;
+}
+
+/* Title Section */
+.page-title {
+  text-align: left;
+  margin-bottom: 20px;  /* Space between title and content */
+}
+
+.page-title h1 {
+  font-size: 32px;  /* Adjust the title size */
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* SubTitle Section */
+.page-subtitle {
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;  /* Space between title and content */
+}
+
+.page-subtitle h1 {
+  font-size: 20px;  /* Adjust the title size */
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Form section styling */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  width: 60%; /* Adjust width of form section */
+}
+
+/* Individual form group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Prevent user resizing */
+textarea {
+  resize: none;
+}
+
+/* Textarea sizes */
+#input1 {
+  width: 100%;
+  height: 500px;  
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#input2, #input3, #input4, #input5 {
+  width: 100%;
+  height: 40px;  
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Upload container that holds the drag-and-drop box and buttons */
+.upload-container {
+  display: flex;
+  flex-direction: column; /* Align children vertically */
+  align-items: center; /* Center the children horizontally */
+  width: 50%; /* Same width as the upload box */
+  margin-top: 20px; /* Add some space above the container */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+/* Drag & Drop Upload Box */
+.upload-box {
+  width: 100%;  
+  height: 500px;
+  border: 2px dashed #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f9f9f9;
+  color: #666;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 60px;
+  margin-top: 60px;
+}
+
+/* Top buttons (Upload & Remove) */
+.button-container {
+  display: flex;                
+  justify-content: flex-end;  
+  gap: 10px;                   
+  width: 100%;  
+  margin-top: 10px;                
+}
+
+.upload-button,
+.remove-button {
+  background-color: #f4a261;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: Lora;
+  font-size: 12px;
+  width: 120px;
+  height: 30px;
+  position: static; 
+}
+
+.upload-button:hover,
+.remove-button:hover {
+  background-color: #e76f51;
+}
+
+.bottom-right-button,
+.bottom-right-button2 {
+  font-family: Lora, sans-serif;
+  position: absolute;
+  right: 20px;
+  width: 100px;
+  height: 30px;
+  font-size: 12px;
+  background-color: #f4a261;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.bottom-right-button {
+  bottom: 20px;
+}
+
+.bottom-right-button2 {
+  bottom: 60px;
+}
+
+.bottom-right-button:hover,
+.bottom-right-button2:hover {
+  background-color: #e76f51;
+}
+
+
+/* Footer Styling */
+footer.site-footer {
+  width: 100%;
+  background-color: #fad370ff;
+  color: black;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  bottom: 0;
+  text-align: center;
+}
+
+/* Main content styling */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the page takes the full height of the viewport */
+}
+
+.main-content {
+  flex: 1; /* Makes sure this section takes up all available space */
+}
+
+/* Ensure the footer does not exceed the width of the page */
+footer {
+  width: 100%;        /* Makes sure the footer spans the entire width */
+  box-sizing: border-box; /* Ensures padding does not increase the width */
+  padding: 0;
+}
+
+/* Prevent any horizontal overflow */
+body, html {
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.footer {
+  background-color: #fad370ff;    /* Yellow background for footer */
+  color: black;                   /* text color */
+  display: flex;
+  justify-content: space-between;   /* Space between logo & links */
+  align-items: flex-start;          /* Align all items to the top */
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+/* Left Section (Logo and Social Media Icons) */
+.left-section {
+  display: flex;
+  flex-direction: column;  /* Stack logo and social icons vertically */
+  align-items: flex-start; /* Align to the left side */
+  gap: 20px;               /* Space between logo and icons */
+}
+
+/* Footer Logo */
+.footer-logo {
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Social Icons Section */
+.social-icons {
+  display: flex;
+  gap: 15px;                 /* Space between icons */
+  align-items: flex-start;     /* Align icons to the top */
+  margin-top: 20px;
+}
+
+.social-icon img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Social Icon Hover Effect */
+.social-icon:hover img {
+  transform: scale(1.1);  /* Zoom effect on hover */
+}
+
+.about-label,
+.faq-label {
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+    font-weight: bold; 
+    font-size: 12px;
+}
+
+/* Footer Items (Links Section) */
+.footer-items {
+  display: flex;
+  justify-content: flex-end;   /* Align items to the right */
+  gap: 50px;                   /* Space between columns */
+  width: 100%;                 /* Ensure the items fill the width */
+}
+
+/* Footer Column Styling */
+.footer-column {
+  display: flex;
+  flex-direction: column;   /* Stack links vertically */
+  gap: 15px;                /* Space between links */
+}
+
+/* Footer Links Styling */
+.footer-item a {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Make "About" and "FAQ" bolder */
+.footer-item a.about-link,
+.footer-item a.faq-link {
+  font-weight: 700;  
+}
+
+/* Default footer link weight (for other links) */
+.footer-item a {
+  font-weight: 500; 
+}
+
+/* Hover effect for links */
+.footer-item a:hover {
+color: #f4a261;  /* Change color on hover */
+}
+/* Footer End */
+
+
+/* General Styles */
+body {
+  font-family: Lora, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;  /* Ensure the body takes full viewport height */
+  background-color: #feedd5ff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling under header */
+}
+
+
+.outer-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+/* Sign-in container styled with some padding and shadow */
+.sign-in-container {
+  background-color: #fad370ff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 400px; 
+  text-align: center;
+  margin-top: 135px;
+  margin-bottom: 135px;
+}
+
+
+/* Heading Style */
+.sign-in-container h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+  color: #555;
+  display: block;
+}
+
+.form-group input {
+  font-family: Lora;
+
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 5px;
+}
+
+.form-group input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.form-group button {
+  font-family: Lora;
+
+  width: 100%;
+  padding: 12px;
+  background-color: #f4a261;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-group button:hover {
+  background-color: #e76f51;
+}
+
+/* Forgot Password Link */
+.forgot-password {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.forgot-password a {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+

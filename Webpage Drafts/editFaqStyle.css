@@ -1,0 +1,321 @@
+/* Import Lora Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Reset and general styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* General Styles */
+body {
+  font-family: Lora, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;  /* Ensure the body takes full viewport height */
+  background-color: #feedd5ff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling under header */
+}
+
+/*Header */
+.navigation {
+  display: flex;
+  align-items: center;            /* Vertically center items */
+  justify-content: flex-end;      /* Align everything to the right */
+  background: #feedd5ff;        /* Beige background for the header */
+  padding: 10px 20px;             /* Adjusted padding */
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;         /* Include padding in total width/height */
+  margin-bottom: 0;               /* Ensure there’s no extra space below the header */
+  height: 60px; 
+}
+
+/* Logo Section */
+.logo {
+  margin-right: auto;               /* Pushes the logo to the left, leaving space for other items */
+}
+
+/* Logo Section */
+.logo img {
+    width: 90px;                   /* Set width */
+    height: auto;                  /* Maintain aspect ratio */
+    margin-right: 5px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 20px;                       /* Space between each link */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;                    /* color for text */
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f4a261;                  /* Color change when hovered */
+}
+
+/* Sign In Button */
+.sign-in-btn {
+  background: #f4a261;            /* Button background */
+  color: black;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  text-decoration: none;           /* Remove underline */
+  margin-left: 20px;               /* Space between the last link and the button */
+}
+
+.sign-in-btn:hover {
+  background: #e76f51;             /* Darken the button when hovered */
+}
+
+/* Header End */
+
+
+/* Main container */
+/* General container styling */
+.container {
+  display: flex;
+  flex-direction: row;
+  position: relative; /* Allows absolute positioning within this container */
+
+
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Title Section */
+.page-title {
+  text-align: left;
+  margin-bottom: 20px;  /* Space between title and content */
+}
+
+.page-title h1 {
+  font-size: 32px;  /* Adjust the title size */
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* SubTitle Section */
+.page-subtitle {
+  text-align: left;
+  margin-bottom: 20px;  /* Space between title and content */
+}
+
+.page-subtitle h1 {
+  font-size: 20px;  /* Adjust the title size */
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* Form section styling */
+.form-section {
+  display: flex;
+  flex-direction: column;
+  width: 60%; /* Adjust width of form section */
+}
+
+/* Individual form group */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label styling */
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Prevent user resizing */
+textarea {
+  resize: none;
+}
+
+#input1, #input2, #input3, #input4, #input5, #input6 {
+  width: 100%;
+  height: 40px;  
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Button at the bottom-right of the container */
+.bottom-right-button, .bottom-right-button2 {
+  font-family: Lora, sans-serif;
+  position: absolute;
+  right: 20px;  /* Adjust distance from the right of the container */
+  width: 100px; /* Set a fixed width for both buttons */
+  height: 30px; /* Set a fixed height for both buttons */
+  font-size: 12px;
+  background-color: #f4a261;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Button at the bottom-right of the container */
+.bottom-right-button {
+  bottom: 20px; /* Adjust distance from the bottom of the container */
+}
+
+.bottom-right-button2 {
+  bottom: 60px;  /* Adjust distance above the first button */
+}
+
+.bottom-right-button:hover, .bottom-right-button2:hover {
+  background-color: #e76f51; /* Darker shade when hovered */
+}
+
+/* Footer Styling */
+footer.site-footer {
+  width: 100%;
+  background-color: #fad370ff;
+  color: black;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+  bottom: 0;
+  text-align: center;
+}
+
+/* Main content styling */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures the page takes the full height of the viewport */
+}
+
+.main-content {
+  flex: 1; /* Makes sure this section takes up all available space */
+}
+
+/* Ensure the footer does not exceed the width of the page */
+footer {
+  width: 100%;        /* Makes sure the footer spans the entire width */
+  box-sizing: border-box; /* Ensures padding does not increase the width */
+  padding: 0;
+}
+
+/* Prevent any horizontal overflow */
+body, html {
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.footer {
+  background-color: #fad370ff;    /* Yellow background for footer */
+  color: black;                   /* text color */
+  display: flex;
+  justify-content: space-between;   /* Space between logo & links */
+  align-items: flex-start;          /* Align all items to the top */
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+/* Left Section (Logo and Social Media Icons) */
+.left-section {
+  display: flex;
+  flex-direction: column;  /* Stack logo and social icons vertically */
+  align-items: flex-start; /* Align to the left side */
+  gap: 20px;               /* Space between logo and icons */
+}
+
+/* Footer Logo */
+.footer-logo {
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Social Icons Section */
+.social-icons {
+  display: flex;
+  gap: 15px;                 /* Space between icons */
+  align-items: flex-start;     /* Align icons to the top */
+  margin-top: 20px;
+}
+
+.social-icon img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Social Icon Hover Effect */
+.social-icon:hover img {
+  transform: scale(1.1);  /* Zoom effect on hover */
+}
+
+/* Footer Items (Links Section) */
+.footer-items {
+  display: flex;
+  justify-content: flex-end;   /* Align items to the right */
+  gap: 50px;                   /* Space between columns */
+  width: 100%;                 /* Ensure the items fill the width */
+}
+
+/* Footer Column Styling */
+.footer-column {
+  display: flex;
+  flex-direction: column;   /* Stack links vertically */
+  gap: 15px;                /* Space between links */
+}
+
+.about-label,
+.faq-label {
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+    font-weight: bold; 
+    font-size: 12px;
+}
+
+/* Footer Links Styling */
+.footer-item a {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Make "About" and "FAQ" bolder */
+.footer-item a.about-link,
+.footer-item a.faq-link {
+  font-weight: 700;  
+}
+
+/* Default footer link weight (for other links) */
+.footer-item a {
+  font-weight: 500; 
+}
+
+/* Hover effect for links */
+.footer-item a:hover {
+color: #f4a261;  /* Change color on hover */
+}
+/* Footer End */

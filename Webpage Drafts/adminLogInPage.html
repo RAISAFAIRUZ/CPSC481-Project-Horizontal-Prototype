@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="signInStyle.css"> <!-- Use the same CSS file for consistency -->
+</head>
+<body>
+    <!-- Placeholder for the header -->
+    <header class="navigation">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="homepage.html">
+            <img src="logo.png" alt="Website Logo">
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+          <a href="feature.html">Feature</a>
+          <a href="shop.html">Shop</a>
+          <a href="faq.html">FAQ</a>
+          <a href="about.html">About</a>
+          <a href="cart.html">Cart</a>
+        </nav>
+    
+        <!-- Sign In Button -->
+        <a href="signin.html" class="sign-in-btn">Sign In</a>
+    </header>
+
+    <!-- Sign In Form Container -->
+    <div class="outer-container">
+
+        <div class="sign-in-container">
+            <h1>Sign In</h1>
+            
+            <form id="signInForm" action="signinAdmin.html" method="POST" class="sign-in-form">
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="email" id="username" name="username" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Sign In</button>
+                </div>
+
+                <div class="forgot-password">
+                    <a href="forgotPassword.html">Forgot Password?</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <div class="divider"></div>
+
+        <!-- Left Section: Logo and Social Media Icons -->
+        <div class="left-section">
+            <div class="footer-logo">
+                <span>LUMINOUS LENS</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                    <img src="facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                    <img src="instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                    <img src="linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://www.twitter.com/" target="_blank" class="social-icon">
+                    <img src="twitter.png" alt="Twitter">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-items">
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="about-label">About</span>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Photographer Biography</a>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Contact Information</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="faq-label">FAQ</span>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">How to Download</a>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">Client Inquiries</a>
+                </div>
+            </div>
+        </div>
+    </section>   
+
+  <script src="editAboutScript.js"></script> <!-- Link to external JS file -->
+  
+</body>
+</html>

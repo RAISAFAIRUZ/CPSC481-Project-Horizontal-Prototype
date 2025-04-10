@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Feature Page Editor</title>
+  <link rel="stylesheet" href="editFeatureExisitingStyle.css">
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="navigation">
+    <div class="logo">
+      <a href="adminHomepage.html">
+        <img src="logo.png" alt="Website Logo">
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="editFeatureMain.html">Edit Feature</a>
+      <a href="editShop.html">Edit Shop</a>
+      <a href="editFaq.html">Edit FAQ</a>
+      <a href="editAbout.html">Edit About</a>
+      <a href="help.html">Help</a>
+    </nav>
+    <a href="signinAdmin.html" class="sign-in-btn">Sign Out</a>
+  </header>
+
+  <!-- MAIN CONTENT AREA -->
+  <div class="main-content">
+    <div class="editor-container">
+      <h1>Feature Page Layout Editor</h1>
+
+      <!-- Textarea -->
+      <label for="featureDescription">Feature Description:</label>
+      <textarea id="featureDescription" rows="4">Breathtaking views from Hawaii 2025. During my trip I immersed myself in the rich culture of Hawaii. I experienced the most stunning sunsets and saw adorable sea-life. On Sale 01/05/2025</textarea>
+
+      <!-- Dropdown -->
+      <label for="layoutSelector">Select Number of Pictures:</label>
+      <select id="layoutSelector">
+        <option value="5"selected>5 Pictures</option>
+      </select>
+
+      <!-- Layout Preview -->
+      <!-- Layout Preview -->
+      <div id="layoutPreview" class="layout-preview">
+        <!-- Top Image Drop Zone -->
+        <div class="drop-zone large" data-index="0">
+          <img src="feature1.jpg" alt="Top Image" />
+        </div>
+      
+        <!-- Grid of Images -->
+        <div class="grid-container">
+          <div class="drop-zone small" data-index="1">
+            <img src="feature2.jpg" alt="Image 2" />
+          </div>
+          <div class="drop-zone small" data-index="2">
+            <img src="feature3.jpg" alt="Image 3" />
+          </div>
+          <div class="drop-zone small" data-index="3">
+            <img src="feature4.jpg" alt="Image 4" />
+          </div>
+          <div class="drop-zone small" data-index="4">
+            <img src="feature5.jpg" alt="Image 5" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-container" id="buttonContainer" style="display: flex;">
+        <button id="saveButton" class="save-button">Save</button>
+        <button id="cancelButton" class="cancel-button">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <section class="footer">
+    <div class="divider"></div>
+
+    <div class="left-section">
+      <div class="footer-logo">
+        <span>LUMINOUS LENS</span>
+      </div>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+          <img src="facebook.png" alt="Facebook">
+        </a>
+        <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+          <img src="instagram.png" alt="Instagram">
+        </a>
+        <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+          <img src="linkedin.png" alt="LinkedIn">
+        </a>
+        <a href="https://www.twitter.com/" target="_blank" class="social-icon">
+          <img src="twitter.png" alt="Twitter">
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-items">
+
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="about-label">About</span>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Photographer Biography</a>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Contact Information</a>
+                </div>
+            </div>
+    
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="faq-label">FAQ</span>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">How to Download</a>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">Client Inquiries</a>
+                </div>
+            </div>
+        </div>
+    </section> 
+
+  <script src="editFeatureScript.js"></script>
+
+  <script>
+    document.querySelectorAll('.drop-zone').forEach(dropZone => {
+      dropZone.addEventListener('dragover', e => {
+        e.preventDefault();
+        dropZone.classList.add('drag-over');
+      });
+  
+      dropZone.addEventListener('dragleave', () => {
+        dropZone.classList.remove('drag-over');
+      });
+  
+      dropZone.addEventListener('drop', e => {
+        e.preventDefault();
+        dropZone.classList.remove('drag-over');
+  
+        const file = e.dataTransfer.files[0];
+        if (file && file.type.startsWith('image/')) {
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const img = dropZone.querySelector('img');
+            if (img) {
+              img.src = event.target.result;  
+            } else {
+              const newImg = document.createElement('img');
+              newImg.src = event.target.result;
+              dropZone.appendChild(newImg);
+            }
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+    });
+  </script>
+  
+
+</body>
+</html>

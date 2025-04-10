@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit About</title>
+    <link rel="stylesheet" href="editAboutStyle.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+  <!-- Placeholder for the header -->
+  <header class="navigation">
+    <!-- Logo Section -->
+    <div class="logo">
+      <a href="adminHomepage.html">
+        <img src="logo.png" alt="Website Logo">
+      </a>
+    </div>
+    
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      <a href="editFeatureMain.html">Edit Feature</a>
+      <a href="editShop.html"> Edit Shop</a>
+      <a href="editFaq.html">Edit FAQ</a>
+      <a href="editAbout.html"> Edit About</a>
+      <a href="help.html">Help</a>
+    </nav>
+
+    <!-- Sign In Button -->
+    <a href="signinAdmin.html" class="sign-in-btn">Sign Out</a>
+  </header>
+
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <div class="container">
+      <!-- Left: Form Section -->
+      <div class="form-section">
+        <div class="page-title">
+          <h1>Edit About</h1>
+        </div>
+
+        <div class="form-group">
+          <label for="input1">Edit Biography</label>
+          <textarea id="input1"></textarea>
+        </div>
+
+        <div class="page-subtitle">
+          <h1>Edit Contact Information</h1>
+        </div>
+
+        <div class="form-group">
+          <label for="input2">Primary Phone</label>
+          <textarea id="input2"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input3">Photographer Email</label>
+          <textarea id="input3"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input4">Admin Email</label>
+          <textarea id="input4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input5">Studio Address</label>
+          <textarea id="input5"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Right: Column containing the Drag & Drop Upload Box and Buttons -->
+    <div class="upload-container">
+        <div class="upload-box" id="drop-area">
+            Click Box to Upload or Drag & Drop Image Here
+        </div>
+
+        <!-- Hidden File Input (used for clicking to open file picker) -->
+        <input type="file" id="file-input" accept="image/*" style="display: none;" multiple>
+
+
+        <!-- Button Container directly under the Drag & Drop Box -->
+        <div class="button-container">
+          <button class="remove-button" id="removeBtn">Remove Image</button>
+        </div>
+    </div>
+
+
+
+      <!-- Button at the bottom right of the container -->
+       
+      
+      <button class="bottom-right-button" id="cancelBtn">Cancel</button>
+      <button class="bottom-right-button2" id="saveBtn">Save Changes</button>
+
+    
+    </div>
+
+</div>
+
+
+  <!-- Footer Section -->
+  <section class="footer">
+    <div class="divider"></div>
+
+    <!-- Left Section: Logo and Social Media Icons -->
+    <div class="left-section">
+        <div class="footer-logo">
+            <span>LUMINOUS LENS</span>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                <img src="facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                <img src="instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                <img src="linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.twitter.com/" target="_blank" class="social-icon">
+                <img src="twitter.png" alt="Twitter">
+            </a>
+        </div>
+    </div>
+    
+        <div class="footer-items">
+
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="about-label">About</span>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Photographer Biography</a>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Contact Information</a>
+                </div>
+            </div>
+    
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="faq-label">FAQ</span>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">How to Download</a>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">Client Inquiries</a>
+                </div>
+            </div>
+        </div>
+    </section>   
+
+  <script src="editAboutScript.js"></script> <!-- Link to external JS file -->
+  
+  
+
+</body>
+</html>
