@@ -1,19 +1,62 @@
-<section id="shop-page" class="page active">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop Page</title>
+  <link rel="stylesheet" href="../styles2.css" />
+</head>
+<body>
+
+  <!-- Header placeholder -->
+  <div id="header-container"></div>
+
+  <!-- Main Shop Section -->
+  <section id="shop-page" class="page active">
     <h1>Shop</h1>
     <p class="subtitle">Shop from Bestsellers to Stunning Destinations</p>
-    
+
+    <!-- Search Bar -->
     <div class="search-container">
-      <input type="text" id="search-input" placeholder="Search by Hashtags">
+      <input type="text" id="search-input" placeholder="Search by Hashtags" />
       <button id="search-button" class="search-button">
         <i class="fas fa-search"></i>
       </button>
     </div>
-  
-    <div class="category-section">
-      
-    </div>
-  
-    <div class="shop-all-section">
-     
-    </div>
+
+    <!-- Categories will be added here dynamically -->
+    <div class="category-section-wrapper"></div>
+
+    <!-- Shop All section will be injected here -->
+    <div class="shop-all-wrapper"></div>
   </section>
+
+  <!-- Footer placeholder -->
+  <div id="footer-container"></div>
+
+  <!-- Inject header & footer -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        });
+
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer-container").innerHTML = data;
+        });
+
+      // Call the shop page initializer
+      if (typeof initShopPage === 'function') {
+        initShopPage();
+      }
+    });
+  </script>
+
+  <!-- Main JavaScript -->
+  <script src="../script1.js"></script>
+</body>
+</html>
