@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQ Page</title>
+  <link rel="stylesheet" href="../styles2.css" />
+</head>
+<body>
+
+  <!-- Placeholder for header -->
+  <div id="header-container"></div>
+
 <section id="payment-page" class="page active">
   <h1>Payment Details</h1>
 
@@ -14,18 +27,18 @@
 
     <div class="form-group">
       <label for="card-number">Card number</label>
-      <input type="text" id="card-number" placeholder="Enter Card Number" required>
+      <input type="text" id="card-number" placeholder="Enter Card Number" pattern="[1-9]{1}[0-9]{15}" title="Card number must be 16 digits and start with a non-zero digit" required>
     </div>
 
     <div class="form-row">
       <div class="form-group half">
         <label for="exp-date">Exp. date(MM/YYYY)</label>
-        <input type="text" id="exp-date" placeholder="MM/YYYY" required>
+        <input type="text" id="exp-date" placeholder="MM/YYYY" pattern="(0[1-9]|1[0-2])/20(2[5-9]|[3-9][0-9])" title="Expiration date must be MM/YYYY format and a valid future year" required>
       </div>
 
       <div class="form-group half">
         <label for="cvv">CVV</label>
-        <input type="text" id="cvv" placeholder="###" required>
+        <input type="text" id="cvv" placeholder="###" pattern="\d{3}" title="CVV must be 3 digits" required>
       </div>
     </div>
 
@@ -66,3 +79,30 @@
     <button type="submit" class="checkout-button">Proceed to Checkout</button>
   </div>
 </section>
+
+<!-- Placeholder for footer -->
+  <div id="footer-container"></div>
+
+  <!-- Inject header and footer dynamically -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Load header.html into header-container
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-container").innerHTML = data;
+        });
+
+      // Load footer.html into footer-container
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer-container").innerHTML = data;
+        });
+    });
+  </script>
+
+  <!-- Optional: Custom logic -->
+  <script src="../script1.js"></script>
+</body>
+</html>
