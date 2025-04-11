@@ -1,116 +1,284 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Feature Page Editor</title>
-  <link rel="stylesheet" href="editFeatureStyle.css">
+  <meta charset="UTF-8" />
+  <title>Edit FAQ</title>
+  <link rel="stylesheet" href="styles2.css" />
+  <style>
+    body {
+      font-family: 'Lora', serif;
+      background-color: #FEEDD5;
+      color: black;
+      margin: 0;
+      padding: 0;
+    }
+
+    .main-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 40px 40px;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .faq-entry {
+      margin-bottom: 40px;
+    }
+
+    .faq-entry label {
+      display: block;
+      font-weight: bold;
+      color: black;
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .faq-entry p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .button-group button {
+      padding: 8px 16px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .button-group button:hover {
+      background-color: #333;
+    }
+
+    .add-new-qa {
+      margin-top: 50px;
+      text-align: center;
+    }
+
+    .add-new-qa h2 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .new-qa-container {
+      width: 100%;
+      height: 100px;
+      border: 2px dashed #ccc;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+      color: #bbb;
+    }
+
+    .add-new {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #e07a5f;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-style: italic;
+      cursor: pointer;
+    }
+
+    .popup-container {
+      background-color: #ffdddd;
+      border: 2px solid #ff4d4d;
+      padding: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+      border-radius: 8px;
+      color: #ff4d4d;
+      font-family: 'Lora', serif;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9999;
+      width: 80%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: none;
+      text-align: center;
+    }
+
+    .popup-container h2 {
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    .popup-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .popup-buttons button {
+      padding: 10px 20px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      font-style: italic;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup-buttons button:hover {
+      background-color: #e60000;
+    }
+  </style>
 </head>
+
 <body>
   <!-- HEADER -->
   <header class="navigation">
-    <!-- Logo Section -->
     <div class="logo">
       <a href="adminHomepageSignIn.html">
         <img src="../Images/logo.png" alt="Website Logo">
       </a>
     </div>
-    
-    <!-- Navigation Links -->
     <nav class="nav-links">
       <a href="editFeatureMain.html">Edit Feature</a>
       <a href="editShop.html"> Edit Shop</a>
-      <a href="editFaq.html">Edit FAQ</a>
+      <a href="edit-qa.html">Edit FAQ</a>
       <a href="editAbout.html"> Edit About</a>
       <a href="help.html">Help</a>
     </nav>
-
-    <!-- Sign In Button -->
     <a href="adminLogInPage.html" class="sign-in-btn">Sign Out</a>
-
   </header>
 
-  <!-- MAIN CONTENT AREA -->
-  <div class="main-content">
-    <div class="editor-container">
-      <h1>Feature Page Layout Editor</h1>
+  <!-- MAIN CONTENT -->
+  <div class="main-container">
+    <h1>Edit Frequently Asked Questions</h1>
 
-      <!-- Textarea -->
-      <label for="featureDescription">Feature Description:</label>
-      <textarea id="featureDescription" rows="4" placeholder="Enter a description for the feature page..."></textarea>
-
-      <!-- Dropdown -->
-      <label for="layoutSelector">Select Number of Pictures:</label>
-      <select id="layoutSelector">
-        <option value="0">Select</option>
-        <option value="3">3 Pictures</option>
-        <option value="5">5 Pictures</option>
-        <option value="7">7 Pictures</option>
-        <option value="9">9 Pictures</option>
-      </select>
-
-      <!-- Layout Preview -->
-      <div id="layoutPreview" class="layout-preview"></div>
-
-      <!-- Buttons -->
-      <div class="button-container" id="buttonContainer" style="display: none;">
-        <button id="saveButton" class="save-button">Save</button>
-        <button id="cancelButton" class="cancel-button">Cancel</button>
+    <div id="faq-list">
+      <div class="faq-entry" id="faq1">
+        <label>How can I download?</label>
+        <p>Once your payment has been processes your will be prompted to to a download page where there will be a
+          “Download” button. An email will also be sent to your email with the download link. If you have created an
+          account you can also see your past purchases on your My Account Page where can also download. If any issues
+          arise email admin@luminouslens.com.</p>
+        <div class="button-group">
+          <button onclick="location.href='edit-qa2.html'">EDIT</button>
+          <button onclick="confirmDelete('faq1')">REMOVE</button>
+        </div>
       </div>
+
+      <div class="faq-entry" id="faq2">
+        <label>Do you take clients photographs?</label>
+        <p>I do take client photographs on a case by case basis given my availability. Please email me at
+          luna@luminouslens.com to inquire about any personal photography sessions.</p>
+        <div class="button-group">
+          <button onclick="location.href='edit-qa2.html'">EDIT</button>
+          <button onclick="confirmDelete('faq2')">REMOVE</button>
+        </div>
+      </div>
+
+      <div class="faq-entry" id="faq3">
+        <label>I don’t like the photo I purchased, can I return it?</label>
+        <p>Unfortunately given the nature of the digital downloads, I am unable to process refunds on purchases. Please
+          note all sales are final.</p>
+        <div class="button-group">
+          <button onclick="location.href='edit-qa2.html'">EDIT</button>
+          <button onclick="confirmDelete('faq3')">REMOVE</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="add-new-qa">
+      <h2>Add New Q/A</h2>
+      <div class="new-qa-container">+</div>
+      <button class="add-new" onclick="location.href='edit-qa3.html'">ADD NEW</button>
+    </div>
+  </div>
+
+  <!-- DELETE POPUP -->
+  <div class="popup-container" id="deletePopup">
+    <h2>Are you sure you want to remove this question?</h2>
+    <p>This will permanently delete question with its answer.</p>
+    <div class="popup-buttons">
+      <button onclick="deleteFAQ()">YES</button>
+      <button onclick="hidePopup()">CANCEL</button>
     </div>
   </div>
 
   <!-- FOOTER -->
   <section class="footer">
     <div class="divider"></div>
-
     <div class="left-section">
       <div class="footer-logo">
         <span>LUMINOUS LENS</span>
       </div>
       <div class="social-icons">
         <a href="https://www.facebook.com/" target="_blank" class="social-icon">
-          <img src="../Images/facebook.png" alt="Facebook">
+          <img src="../Images/facebook.png" alt="Facebook" />
         </a>
         <a href="https://www.instagram.com/" target="_blank" class="social-icon">
-          <img src="../Images/instagram.png" alt="Instagram">
+          <img src="../Images/instagram.png" alt="Instagram" />
         </a>
         <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
-          <img src="../Images/linkedin.png" alt="LinkedIn">
+          <img src="../Images/linkedin.png" alt="LinkedIn" />
         </a>
         <a href="https://www.twitter.com/" target="_blank" class="social-icon">
-          <img src="../Images/twitter.png" alt="Twitter">
+          <img src="../Images/twitter.png" alt="Twitter" />
         </a>
       </div>
     </div>
 
     <div class="footer-items">
-
-            <div class="footer-column">
-                <div class="footer-item">
-                    <span class="about-label">Edit Shop</span>
-                </div>
-                <div class="footer-item">
-                    <a href="editShop.html">Edit Photos</a>
-                </div>
-                <div class="footer-item">
-                    <a href="editShop.html">Add New Category</a>
-                </div>
-            </div>
-    
-            <div class="footer-column">
-                <div class="footer-item">
-                    <span class="faq-label">Other</span>
-                </div>
-                <div class="footer-item">
-                    <a href="editFaq.html">Edit FAQ</a>
-                </div>
-                <div class="footer-item">
-                    <a href="editAbout.html">Edit About</a>
-                </div>
-            </div>
+      <div class="footer-column">
+        <div class="footer-item">
+          <span class="about-label">Edit Shop</span>
         </div>
-    </section> 
+        <div class="footer-item"><a href="editShop.html">Edit Photos</a></div>
+        <div class="footer-item"><a href="editShop.html">Add New Category</a></div>
+      </div>
+      <div class="footer-column">
+        <div class="footer-item">
+          <span class="faq-label">Other</span>
+        </div>
+        <div class="footer-item"><a href="edit-qa.html">Edit FAQ</a></div>
+        <div class="footer-item"><a href="editAbout.html">Edit About</a></div>
+      </div>
+    </div>
+  </section>
 
-  <script src="editFeatureScript.js"></script>
+  <script>
+    let targetToDelete = null;
+
+    function confirmDelete(id) {
+      targetToDelete = document.getElementById(id);
+      document.getElementById('deletePopup').style.display = 'block';
+    }
+
+    function hidePopup() {
+      document.getElementById('deletePopup').style.display = 'none';
+      targetToDelete = null;
+    }
+
+    function deleteFAQ() {
+      if (targetToDelete) {
+        targetToDelete.remove();
+        hidePopup();
+      }
+    }
+  </script>
 </body>
+
 </html>

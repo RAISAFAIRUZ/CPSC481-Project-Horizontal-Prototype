@@ -78,13 +78,13 @@
             <nav class="nav-links">
                 <a href="editFeatureMain.html">Edit Feature</a>
                 <a href="editShop.html">Edit Shop</a>
-                <a href="editFaq.html">Edit FAQ</a>
+                <a href="edit-qa.html">Edit FAQ</a>
                 <a href="editAbout.html">Edit About</a>
                 <a href="help.html">Help</a>
             </nav>
 
             <!-- Sign In Button -->
-            <a href="#" class="sign-in-btn" id="signOutBtn">Sign Out</a>
+            <a href="adminHomepageSignIn.html" class="sign-in-btn" id="signOutBtn">Sign Out</a>
 
     </header>
 
@@ -187,35 +187,6 @@
 
     </script>
 
-    <script>
-        document.getElementById("signOutBtn").addEventListener("click", function (e) {
-            e.preventDefault();
-
-            // Remove any existing popup if still open
-            const existing = document.querySelector('.popup-container');
-            if (existing) existing.remove();
-
-            const popup = document.createElement("div");
-            popup.className = "popup-container";
-            popup.innerHTML = `
-        <h2>Are you sure you want to sign out?</h2>
-        <p>You'll be returned to the login page.</p>
-        <div class="popup-buttons">
-          <button id="confirmSignOut">Yes</button>
-          <button id="cancelSignOut">No</button>
-        </div>
-      `;
-            document.body.appendChild(popup);
-
-            document.getElementById("confirmSignOut").onclick = () => {
-                window.location.href = "adminHomepageSignIn.html";
-            };
-
-            document.getElementById("cancelSignOut").onclick = () => {
-                popup.remove();
-            };
-        });
-    </script>
 
 
 

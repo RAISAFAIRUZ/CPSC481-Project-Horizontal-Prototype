@@ -129,7 +129,7 @@ function showCancelPopup() {
   document.body.appendChild(popup);
 
   document.getElementById('confirmCancelYes').addEventListener('click', () => {
-    window.location.href = 'editFeautureMain.html';
+    window.location.href = 'editFeatureMain.html';
     popup.remove();
   });
 

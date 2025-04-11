@@ -6,6 +6,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Sign In</title>
     <link rel="stylesheet" href="signInStyle.css"> <!-- Use the same CSS file for consistency -->
+
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .outer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            /* changed from center */
+            padding: 20px 0 40px;
+            /* top, right/left, bottom padding */
+            flex: 1;
+        }
+
+
+
+
+        .sign-in-note {
+            background-color: #f4a261;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            line-height: 1.6;
+            text-align: center;
+            margin-bottom: 8px;
+            /* Tiny clean gap */
+
+            /* 🔽 reduce space here */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+
+        .sign-in-container {
+            background-color: #fcd267;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+
+        }
+
+        .footer {
+            background-color: #fad370ff;
+            padding: 30px 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+
+
+
 </head>
 
 <body>
@@ -32,12 +98,19 @@
         <a href="adminLogInPage.html" class="sign-in-btn">Sign In</a>
     </header>
 
+
+
+    <!-- Sign In Form Container -->
     <!-- Sign In Form Container -->
     <div class="outer-container">
+        <!-- Admin-only message styled in orange box -->
+        <div class="sign-in-note">
+            <p>Unfortunately only admins can sign in now.<br>If you are a user, come back soon.</p>
+        </div>
 
+        <!-- Sign-in Form Card -->
         <div class="sign-in-container">
             <h1>Sign In</h1>
-
             <form id="signInForm" onsubmit="handleAdminLogin(event)" class="sign-in-form">
                 <div class="form-group">
                     <label for="username">Email</label>
@@ -53,10 +126,11 @@
                     <button type="submit">Sign In</button>
                 </div>
             </form>
-
         </div>
-
     </div>
+
+
+
 
 
     <!-- Footer Section -->
