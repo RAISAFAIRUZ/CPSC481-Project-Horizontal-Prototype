@@ -510,7 +510,7 @@ function renderFAQs(faqs) {
 // Edit FAQ
 function editFAQ(index) {
     // First, load the edit-qa page
-    loadComponent("page-container", "components/edit-qa-page.html")
+    loadComponent("page-container", "components/admineditqa.html")
         .then(() => {
             // Then find the form elements
             const questionInput = document.getElementById("question-input");
@@ -538,7 +538,7 @@ function editFAQ(index) {
 
 // Add new FAQ
 function addNewFAQ() {
-    loadComponent("page-container", "components/edit-qa-page.html")
+    loadComponent("page-container", "components/admineditqa.html")
         .then(() => {
             const questionInput = document.getElementById("question-input");
             const answerInput = document.getElementById("answer-input");
