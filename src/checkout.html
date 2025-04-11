@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="checkoutStyle.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+  <!-- Placeholder for the header -->
+  <header class="navigation">
+    <!-- Logo Section -->
+    <div class="logo">
+      <a href="homepage.html">
+        <img src="../Images/logo.png" alt="Website Logo">
+      </a>
+    </div>
+    
+    <!-- Navigation Links -->
+    <nav class="nav-links">
+      <a href="feature.html">Feature</a>
+      <a href="shop.html">Shop</a>
+      <a href="faq.html">FAQ</a>
+      <a href="about.html">About</a>
+      <a href="cart.html">Cart</a>
+    </nav>
+
+    <!-- Sign In Button -->
+    <a href="adminLogInPage.html" class="sign-in-btn">Sign In</a>
+</header>
+
+  <!-- Main Content Section -->
+  <div class="main-content">
+    <div class="container">
+      <!-- Left: Form Section -->
+      <div class="form-section">
+        <div class="page-title">
+          <h1>Checkout Page Under Development</h1>
+        </div>
+
+        <div class="form-group">
+          <label for="input1">Full Name</label>
+          <textarea id="input2"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input2">Email Address</label>
+          <textarea id="input2"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input3">Shipping Address</label>
+          <textarea id="input3"></textarea>
+        </div>
+
+        <div class="page-subtitle">
+          <h1>Payment Information</h1>
+        </div>
+
+        <div class="form-group">
+          <label for="input4">Credit Card Number</label>
+          <textarea id="input4"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input6">CVV</label>
+          <textarea id="input6"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="input6">Expiry Date</label>
+          <textarea id="input6"></textarea>
+        </div>
+
+      </div>
+
+
+      <!-- Button at the bottom right of the container -->
+       
+      
+      <button class="bottom-right-button" id="cancelBtn" onclick="window.location.href='cart.html'">Cancel</button>
+      <button class="bottom-right-button2" id="saveBtn">Checkout</button>
+
+    
+    </div>
+
+</div>
+
+
+  <!-- Footer Section -->
+  <section class="footer">
+    <div class="divider"></div>
+
+    <!-- Left Section: Logo and Social Media Icons -->
+    <div class="left-section">
+        <div class="footer-logo">
+            <span>LUMINOUS LENS</span>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                <img src="../Images/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                <img src="../Images/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                <img src="../Images/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.twitter.com/" target="_blank" class="social-icon">
+                <img src="../Images/twitter.png" alt="Twitter">
+            </a>
+        </div>
+    </div>
+    
+        <div class="footer-items">
+
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="about-label">About</span>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Photographer Biography</a>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Contact Information</a>
+                </div>
+            </div>
+    
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="faq-label">FAQ</span>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">How to Download</a>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">Client Inquiries</a>
+                </div>
+            </div>
+        </div>
+    </section>    
+
+    <script>
+      // Cancel button takes user back to cart page
+      document.getElementById("cancelBtn").addEventListener("click", function() {
+        window.location.href = "cart.html";
+      });
+    
+      // Checkout button with validation
+      document.getElementById("saveBtn").addEventListener("click", function() {
+        const inputs = document.querySelectorAll("textarea");
+        let allFilled = true;
+    
+        inputs.forEach((input) => {
+          if (input.value.trim() === "") {
+            allFilled = false;
+          }
+        });
+    
+        if (!allFilled) {
+          showPopup("Please fill out all fields before checking out.", true);
+        } else {
+          window.location.href = "order-confirmation.html";
+        }
+      });
+    
+      // Reuse your existing popup function
+      function showPopup(message, isError = false) {
+        const container = document.createElement('div');
+        container.className = 'popup-message';
+        if (isError) container.classList.add('error');
+        container.textContent = message;
+        document.body.appendChild(container);
+    
+        setTimeout(() => {
+          container.remove();
+        }, 2500);
+      }
+    </script>
+  
+  
+
+</body>
+</html>
