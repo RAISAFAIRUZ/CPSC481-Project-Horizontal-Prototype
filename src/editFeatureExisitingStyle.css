@@ -17,78 +17,100 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  min-height: 100vh;  /* Ensure the body takes full viewport height */
+  min-height: 100vh;
+  /* Ensure the body takes full viewport height */
   background-color: #feedd5ff;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
-  overflow-y: hidden; /* Prevent vertical scrolling under header */
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+  overflow-y: hidden;
+  /* Prevent vertical scrolling under header */
 }
 
 
 /* HEADER */
 .navigation {
   display: flex;
-  align-items: center;            /* Vertically center items */
-  justify-content: flex-end;      /* Align everything to the right */
-  background: #feedd5ff;        /* Beige background for the header */
-  padding: 10px 20px;             /* Adjusted padding */
+  align-items: center;
+  /* Vertically center items */
+  justify-content: flex-end;
+  /* Align everything to the right */
+  background: #feedd5ff;
+  /* Beige background for the header */
+  padding: 10px 20px;
+  /* Adjusted padding */
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 1000;
-  box-sizing: border-box;         /* Include padding in total width/height */
-  margin-bottom: 0;               /* Ensure there’s no extra space below the header */
-  height: 60px; 
+  box-sizing: border-box;
+  /* Include padding in total width/height */
+  margin-bottom: 0;
+  /* Ensure there’s no extra space below the header */
+  height: 60px;
 }
 
 /* Logo Section */
 .logo {
-  margin-right: auto;               /* Pushes the logo to the left, leaving space for other items */
+  margin-right: auto;
+  /* Pushes the logo to the left, leaving space for other items */
 }
 
 /* Logo Section */
 .logo img {
-    width: 90px;                   /* Set width */
-    height: auto;                  /* Maintain aspect ratio */
-    margin-right: 5px;
+  width: 90px;
+  /* Set width */
+  height: auto;
+  /* Maintain aspect ratio */
+  margin-right: 5px;
 }
 
 /* Navigation Links */
 .nav-links {
   display: flex;
-  gap: 20px;                       /* Space between each link */
+  gap: 20px;
+  /* Space between each link */
 }
 
 .nav-links a {
   text-decoration: none;
-  color: black;                    /* color for text */
+  color: black;
+  /* color for text */
   font-size: 16px;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: #f4a261;                  /* Color change when hovered */
+  color: #f4a261;
+  /* Color change when hovered */
 }
 
 /* Sign In Button */
 .sign-in-btn {
-  background: #f4a261;            /* Button background */
+  background: #f4a261;
+  /* Button background */
   color: black;
   padding: 8px 15px;
   border-radius: 5px;
   font-weight: 600;
   transition: background 0.3s ease;
-  text-decoration: none;           /* Remove underline */
-  margin-left: 20px;               /* Space between the last link and the button */
+  text-decoration: none;
+  /* Remove underline */
+  margin-left: 20px;
+  /* Space between the last link and the button */
 }
 
 .sign-in-btn:hover {
-  background: #e76f51;             /* Darken the button when hovered */
+  background: #e76f51;
+  /* Darken the button when hovered */
 }
+
 /* HEADER END*/
 
 
-/* Button Styling */
+/* Styling for popup containers (Cancel popup) */
+
+/* Success/Error Popup Message */
 .popup-message {
   position: fixed;
   top: 40px;
@@ -99,7 +121,7 @@ body {
   border: 1px solid #a7f3d0;
   padding: 16px 24px;
   border-radius: 8px;
-  font-family: Lora sans-serif;
+  font-family: 'Lora', serif;
   font-weight: 600;
   font-style: italic;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -114,52 +136,73 @@ body {
   border-color: #fca5a5;
 }
 
-/* Styling for popup containers (Cancel popup) */
+/* Cancel / Confirm Popup Styling */
 .popup-container {
+  font-family: 'Lora', serif;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  padding: 20px;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   z-index: 9999;
+  background-color: #ffdddd;
+  border: 2px solid #ff4d4d;
+  padding: 20px;
+  border-radius: 8px;
+  color: #ff4d4d;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
-  width: 300px;
-  border: 2px solid #ccc;
 }
 
+/* Optional heading style if you're using <h2> in popups */
+.popup-container h2 {
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* Button Styling */
 .popup-btn-yes,
 .popup-btn-no {
-  padding: 8px 16px;
-  border-radius: 4px;
+  font-family: 'Lora', serif;
+  font-weight: bold;
+  font-style: italic;
+  padding: 10px 20px;
+  border-radius: 8px;
   cursor: pointer;
-  margin: 10px;
+  transition: background-color 0.3s ease;
+  border: none;
+  color: white;
 }
 
+/* YES = red */
 .popup-btn-yes {
-  background-color: #28a745;
-  color: white;
-  border: none;
-}
-
-.popup-btn-no {
-  background-color: #dc3545;
-  color: white;
-  border: none;
+  background-color: #ff4d4d;
 }
 
 .popup-btn-yes:hover {
-  background-color: #218838;
+  background-color: #e60000;
+}
+
+/* NO = gray */
+.popup-btn-no {
+  background-color: #e60000;
 }
 
 .popup-btn-no:hover {
-  background-color: #c82333;
+  background-color: #e60000;
+}
+
+/* Button Layout Container */
+.popup-container .flex {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 16px;
 }
 
 
-/* Main Styling */ 
+/* Main Styling */
 .editor-container {
   display: flex;
   flex-direction: row;
@@ -170,8 +213,8 @@ body {
   /* max-width: 1200px; 
   max-width: 800px;
   */
-  
-  
+
+
 
   margin: 40px auto;
   padding: 30px;
@@ -179,7 +222,7 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
   box-sizing: border-box;
-  position: relative; 
+  position: relative;
 }
 
 .main-content {
@@ -192,23 +235,26 @@ body {
 h1 {
   text-align: left;
   width: 100%;
-  margin-bottom: 20px; /* Optional: Add space below the title */
+  margin-bottom: 20px;
+  /* Optional: Add space below the title */
 }
 
 /* Align the labels (Feature Description, Select Number of Pictures) */
 label {
   text-align: left;
   width: 100%;
-  margin-top: 10px; /* Add some space between label and input */
-  margin-bottom: 5px; /* Add space below the label */
+  margin-top: 10px;
+  /* Add some space between label and input */
+  margin-bottom: 5px;
+  /* Add space below the label */
 }
 
 /* Style the dropdown select element */
 select {
   font-family: Lora, sans-serif;
-  width: 200px; 
-  padding: 5px 10px; 
-  font-size: 14px; 
+  width: 200px;
+  padding: 5px 10px;
+  font-size: 14px;
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -221,10 +267,12 @@ select {
 .drop-zone.large {
   position: relative;
   width: 100%;
-  padding-top: 56.25%; /* 16:9 ratio */
+  padding-top: 56.25%;
+  /* 16:9 ratio */
   border: 2px dashed #aaa;
   background-color: #f9f9f9;
-  overflow: hidden; /* 👈 Ensure children are clipped */
+  overflow: hidden;
+  /* 👈 Ensure children are clipped */
 }
 
 /* Small drop zones */
@@ -234,7 +282,8 @@ select {
   height: 150px;
   border: 2px dashed #aaa;
   background-color: #f9f9f9;
-  overflow: hidden; /* 👈 Ensure images don't spill out */
+  overflow: hidden;
+  /* 👈 Ensure images don't spill out */
 }
 
 /* Common image styles for both */
@@ -244,7 +293,8 @@ select {
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 👈 Ensure it covers the zone cleanly */
+  object-fit: cover;
+  /* 👈 Ensure it covers the zone cleanly */
 }
 
 
@@ -254,7 +304,7 @@ select {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin-top: 10px;
-  
+
 }
 
 
@@ -262,11 +312,11 @@ select {
 .editor-container {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  align-items: flex-start;
   padding: 20px;
   width: 100%;
   max-width: 1200px;
-  
+
 }
 
 /* Layout preview area styling */
@@ -283,13 +333,15 @@ select {
 
 .button-container {
   display: flex;
-  justify-content: flex-end; /* Align buttons to the right */
+  justify-content: flex-end;
+  /* Align buttons to the right */
   margin-top: 20px;
   width: 100%;
 }
 
 /* Style for Save and Cancel buttons */
-.save-button, .cancel-button {
+.save-button,
+.cancel-button {
   font-family: Lora, sans-serif;
   padding: 10px 20px;
   font-size: 16px;
@@ -299,10 +351,12 @@ select {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s;
-  margin-left: 10px; /* Add space between the buttons */
+  margin-left: 10px;
+  /* Add space between the buttons */
 }
 
-.save-button:hover, .cancel-button:hover {
+.save-button:hover,
+.cancel-button:hover {
   background-color: #b2644a;
 
 }
@@ -316,8 +370,10 @@ textarea {
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  resize: none;  /* Prevents resizing */
-  box-sizing: border-box; /* Ensure padding is included in the width */
+  resize: none;
+  /* Prevents resizing */
+  box-sizing: border-box;
+  /* Ensure padding is included in the width */
   background-color: rgb(250, 241, 228);
 
 }
@@ -339,31 +395,41 @@ footer.site-footer {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensures the page takes the full height of the viewport */
+  min-height: 100vh;
+  /* Ensures the page takes the full height of the viewport */
 }
 
 .main-content {
-  flex: 1; /* Makes sure this section takes up all available space */
+  flex: 1;
+  /* Makes sure this section takes up all available space */
 }
 
 /* Ensure the footer does not exceed the width of the page */
 footer {
-  width: 100%;        /* Makes sure the footer spans the entire width */
-  box-sizing: border-box; /* Ensures padding does not increase the width */
+  width: 100%;
+  /* Makes sure the footer spans the entire width */
+  box-sizing: border-box;
+  /* Ensures padding does not increase the width */
   padding: 0;
 }
 
 /* Prevent any horizontal overflow */
-body, html {
-  overflow-x: hidden; /* Prevents horizontal scrolling */
+body,
+html {
+  overflow-x: hidden;
+  /* Prevents horizontal scrolling */
 }
 
 .footer {
-  background-color: #fad370ff;    /* Yellow background for footer */
-  color: black;                   /* text color */
+  background-color: #fad370ff;
+  /* Yellow background for footer */
+  color: black;
+  /* text color */
   display: flex;
-  justify-content: space-between;   /* Space between logo & links */
-  align-items: flex-start;          /* Align all items to the top */
+  justify-content: space-between;
+  /* Space between logo & links */
+  align-items: flex-start;
+  /* Align all items to the top */
   padding: 40px 20px;
   width: 100%;
   box-sizing: border-box;
@@ -373,9 +439,12 @@ body, html {
 /* Left Section (Logo and Social Media Icons) */
 .left-section {
   display: flex;
-  flex-direction: column;  /* Stack logo and social icons vertically */
-  align-items: flex-start; /* Align to the left side */
-  gap: 20px;               /* Space between logo and icons */
+  flex-direction: column;
+  /* Stack logo and social icons vertically */
+  align-items: flex-start;
+  /* Align to the left side */
+  gap: 20px;
+  /* Space between logo and icons */
 }
 
 /* Footer Logo */
@@ -388,8 +457,10 @@ body, html {
 /* Social Icons Section */
 .social-icons {
   display: flex;
-  gap: 15px;                 /* Space between icons */
-  align-items: flex-start;     /* Align icons to the top */
+  gap: 15px;
+  /* Space between icons */
+  align-items: flex-start;
+  /* Align icons to the top */
   margin-top: 20px;
 }
 
@@ -401,31 +472,37 @@ body, html {
 
 /* Social Icon Hover Effect */
 .social-icon:hover img {
-  transform: scale(1.1);  /* Zoom effect on hover */
+  transform: scale(1.1);
+  /* Zoom effect on hover */
 }
 
 /* Footer Items (Links Section) */
 .footer-items {
   display: flex;
-  justify-content: flex-end;   /* Align items to the right */
-  gap: 50px;                   /* Space between columns */
-  width: 100%;                 /* Ensure the items fill the width */
+  justify-content: flex-end;
+  /* Align items to the right */
+  gap: 50px;
+  /* Space between columns */
+  width: 100%;
+  /* Ensure the items fill the width */
 }
 
 /* Footer Column Styling */
 .footer-column {
   display: flex;
-  flex-direction: column;   /* Stack links vertically */
-  gap: 15px;                /* Space between links */
+  flex-direction: column;
+  /* Stack links vertically */
+  gap: 15px;
+  /* Space between links */
 }
 
 .about-label,
 .faq-label {
-    color: inherit;
-    text-decoration: none;
-    cursor: default;
-    font-weight: bold; 
-    font-size: 12px;
+  color: inherit;
+  text-decoration: none;
+  cursor: default;
+  font-weight: bold;
+  font-size: 12px;
 }
 
 /* Footer Links Styling */
@@ -440,17 +517,16 @@ body, html {
 /* Make "About" and "FAQ" bolder */
 .footer-item a.about-link,
 .footer-item a.faq-link {
-  font-weight: 700;  
+  font-weight: 700;
 }
 
 /* Default footer link weight (for other links) */
 .footer-item a {
-  font-weight: 500; 
+  font-weight: 500;
 }
 
 /* Hover effect for links */
 .footer-item a:hover {
-color: #f4a261;  /* Change color on hover */
+  color: #f4a261;
+  /* Change color on hover */
 }
-
-
