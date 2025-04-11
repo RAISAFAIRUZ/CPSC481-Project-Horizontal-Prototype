@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.appendChild(popup);
 
                 document.getElementById("confirmSignOut").onclick = () => {
-                    window.location.href = "adminHomepageSignIn.html";
+                    window.location.href = "homepage.html";
                 };
                 document.getElementById("cancelSignOut").onclick = () => {
                     popup.remove();
