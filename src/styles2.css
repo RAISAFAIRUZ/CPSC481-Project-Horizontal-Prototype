@@ -901,11 +901,11 @@ html {
   background-color: #000;
   color: #fff;
   border: none;
-  padding: 12px 20px;
+  padding: 12px 10px;
   border-radius: 4px;
   cursor: pointer;
-  flex: 1;
   text-align: center;
+  width: fit-content;
 }
 
 .product-tags {
@@ -1165,9 +1165,9 @@ html {
 
 .product-list {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  padding: 20px;
+  padding: 150px;
 }
 
 .product-item {
@@ -1346,7 +1346,7 @@ html {
 
 /* General Styles */
 #shop-page {
-  padding: 30px;
+  padding: 150px;
   background-color: #f9ecd2;
   font-family: sans-serif;
   /* Modern font */
@@ -1401,6 +1401,7 @@ html {
   overflow: hidden;
   background-color: #F9ECD3;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  align-items: flex-start;
 }
 
 #shop-page .category-section .category-content {
@@ -1437,13 +1438,17 @@ html {
 
 #shop-page .category-section .category-image {
   flex: 1;
+  display: flex;
+  justify-content: end;
 }
 
 #shop-page .category-section .category-image img {
-  width: 70%;
+  width: 65%;
   /*change the size of the images on the main page*/
+  border-radius: 15px;
   height: 85%;
   object-fit: cover;
+  margin-right: 30px;
 }
 
 #shop-page .category-section.reverse {
@@ -1567,7 +1572,7 @@ html {
 /* Product Image Container */
 #product-detail-page .product-image-container {
   flex: 1;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 #product-detail-page .product-image-container img {
@@ -1613,6 +1618,7 @@ html {
 /* Product Actions */
 #product-detail-page .product-actions {
   display: flex;
+  flex-direction: row;
   gap: 15px;
   margin-bottom: 30px;
 }
@@ -1694,7 +1700,7 @@ html {
 
 
 #product-detail-page {
-  padding: 30px;
+  padding: 150px;
   background-color: #faebd7;
   font-family: sans-serif;
   color: #333;
@@ -2075,17 +2081,18 @@ html {
   padding: 0;
   padding-left: 0;
   padding-right: 0px;
-
+  border-radius: 15px;
 }
 
 #product-list-page .product-item img {
   width: 550px;
   /* Ensure the image is full width */
-  height: 300px;
+  height: 250px;
   /* Maintain aspect ratio */
   object-fit: fill;
   /* Cover the area without stretching */
-  border-radius: 0px;
+  /* border-radius: 15px; */
+  border-radius: 0px 0px 0px 0px;
 }
 
 
