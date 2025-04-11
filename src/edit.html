@@ -20,22 +20,21 @@
         }
 
         .popup-container {
-            background-color: #ffdddd;
-            border: 2px solid #ff4d4d;
-            padding: 20px;
-            max-width: 500px;
-            margin: 0 auto;
-            border-radius: 8px;
-            color: #ff4d4d;
             font-family: 'Lora', serif;
             position: fixed;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 9999;
-            width: 80%;
+            background-color: #ffdddd;
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            border-radius: 8px;
+            color: #ff4d4d;
+            width: 90%;
             max-width: 500px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .popup-container h2 {
@@ -47,6 +46,7 @@
             display: flex;
             gap: 10px;
             margin-top: 20px;
+            justify-content: center;
         }
 
         .popup-buttons button {
@@ -63,6 +63,16 @@
 
         .popup-buttons button:hover {
             background-color: #e60000;
+        }
+
+        .popup-container.success {
+            background-color: #ddffdd;
+            border-color: #33cc33;
+            color: #228822;
+        }
+
+        .popup-buttons.success button {
+            background-color: #33cc33;
         }
     </style>
 </head>
@@ -126,10 +136,11 @@
                 <button type="button" id="cancel-edit" class="bg-black text-white px-4 py-2 rounded" data-safe>
                     Cancel
                 </button>
-
             </div>
         </form>
     </div>
+
+
 
     <!-- Include footer -->
     <div w3-include-html="footer.html"></div>
@@ -165,6 +176,10 @@
     </script>
 
     <script>
+        document.getElementById('save').addEventListener('click', () => {
+            document.getElementById('successPopup').style.display = 'block';
+        });
+
         document.addEventListener("DOMContentLoaded", () => {
             document.body.addEventListener("click", function (e) {
                 const el = e.target.closest("a, button");
@@ -179,12 +194,12 @@
                 const popup = document.createElement("div");
                 popup.classList.add("popup-container");
                 popup.innerHTML = `
-                <h2>Are you sure you want to leave this page?</h2>
-                <p>Exiting now will discard unsaved changes. Save before you leave.</p>
-                <div class="popup-buttons">
-                    <button>Yes, leave</button>
-                    <button>No, stay</button>
-                </div>`;
+          <h2>Are you sure you want to leave this page?</h2>
+          <p>Exiting now will discard unsaved changes. Save before you leave.</p>
+          <div class="popup-buttons">
+              <button>Yes, leave</button>
+              <button>No, stay</button>
+          </div>`;
                 document.body.appendChild(popup);
 
                 popup.querySelector("button").onclick = () => {
@@ -195,9 +210,6 @@
             });
         });
     </script>
-    
-
-
 </body>
 
 </html>

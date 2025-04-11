@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.body.appendChild(successPopup);
                     setTimeout(() => {
                         successPopup.remove();
-                        window.location.href = "index.html";
+                        window.location.href = `viewPhoto.html?index=${index}`;
                     }, 1800);
                 }
             }
