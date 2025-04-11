@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunshine by the Shore</title>
+    <link rel="stylesheet" href="viewImageStyle.css"> <!-- Include your CSS file -->
+</head>
+<body>
+    <!-- Placeholder for the header -->
+    <header class="navigation">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="homepage.html">
+            <img src="../Images/logo.png" alt="Website Logo">
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+          <a href="feature.html">Feature</a>
+          <a href="shop.html">Shop</a>
+          <a href="faq.html">FAQ</a>
+          <a href="about.html">About</a>
+          <a href="cart.html">Cart</a>
+        </nav>
+    
+        <!-- Sign In Button -->
+        <a href="signin.html" class="sign-in-btn">Sign In</a>
+    </header>
+
+    <!-- Main Content Section -->
+    <div class="main-content">
+      <!-- Container to wrap the entire content -->
+      <div class="container">
+
+        <!-- Photo Detail Section -->
+        <div class="photo-detail-container">
+          <!-- Image Section -->
+          <div class="photo-image">
+            <img src="../Images/BeachSunset.jpg" alt="Product Image" class="image" />
+          </div>
+          
+          <!-- Text Info Section -->
+          <div class="photo-info">
+            <h2 class="photo-title">Sunshine by the Shore</h2>
+            <p class="photo-sub">Hawaii</p>
+            <p class="photo-sub price">$3.99</p>
+            <p class="photo-sub">Stunning Hawaii sunset.</p>
+            <p class="photo-sub">This photo was taken during a evening walk by the beach.</p>
+            <p class="photo-sub">#Hawaii, #Sunshine, #Beach</p>
+
+            <div class="button-row">
+              <button class="action-button" onclick="showPreview()">Preview</button>
+              <button class="action-button add-to-cart" onclick="addToCart()">Add to Cart</button>
+            </div>
+
+            <p class="disclaimer">* All sales are final</p>
+          </div>
+
+          <div id="previewModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closePreview()">&times;</span>
+              <img src="../Images/BeachSunset.jpg" alt="Preview Image" style="max-width: 100%; height: auto;">
+            </div>
+          </div>
+      
+        </div>
+      </div>
+
+        <!-- Call to Action: Shop Section -->
+        <div class="shop-cta">
+          <span>Shop our Photos on Sale</span>
+        </div>
+
+        <!-- Product Cards Section -->
+        <section class="product-cards">
+          <a href="maui-sunset.html" class="card">
+            <div class="card-image">
+              <img src="../Images/PinkSunset.jpg" alt="Product Image" class="image" />
+            </div>
+            <div class="card-content">
+              <span class="product-name">Maui Sunset</span>
+              <span class="product-price">$3.99</span>
+            </div>
+          </a>
+
+          <a href="cloudy-island.html" class="card">
+            <div class="card-image">
+              <img src="../Images/HawaiiRainbow.jpg" alt="Product Image" class="image" />
+            </div>
+            <div class="card-content">
+              <span class="product-name">Cloudy Island</span>
+              <span class="product-price">$3.99</span>
+            </div>
+          </a>
+
+          <a href="sunshine-shore.html" class="card">
+            <div class="card-image">
+              <img src="../Images/BeachSunset.jpg" alt="Product Image" class="image" />
+            </div>
+            <div class="card-content">
+              <span class="product-name">Sunshine by the Shore</span>
+              <span class="product-price">$3.99</span>
+            </div>
+          </a>
+        </section>
+      </div>
+    </div>
+
+
+
+
+
+  <!-- Footer Section -->
+  <section class="footer">
+    <div class="divider"></div>
+
+    <!-- Left Section: Logo and Social Media Icons -->
+    <div class="left-section">
+        <div class="footer-logo">
+            <span>LUMINOUS LENS</span>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                <img src="../Images/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                <img src="../Images/instagram.png" alt="Instagram">
+            </a>
+            <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                <img src="../Images/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.twitter.com/" target="_blank" class="social-icon">
+                <img src="../Images/twitter.png" alt="Twitter">
+            </a>
+        </div>
+    </div>
+    
+        <div class="footer-items">
+
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="about-label">About</span>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Photographer Biography</a>
+                </div>
+                <div class="footer-item">
+                    <a href="about.html">Contact Information</a>
+                </div>
+            </div>
+    
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="faq-label">FAQ</span>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">How to Download</a>
+                </div>
+                <div class="footer-item">
+                    <a href="faq.html">Client Inquiries</a>
+                </div>
+            </div>
+        </div>
+    </section>   
+
+
+<script>
+  // Show preview modal
+  function showPreview() {
+    document.getElementById("previewModal").style.display = "block";
+  }
+
+  // Close preview modal
+  function closePreview() {
+    document.getElementById("previewModal").style.display = "none";
+  }
+
+  function showPopup(message, isError = false) {
+    const container = document.createElement('div');
+    container.className = 'popup-message';
+    if (isError) container.classList.add('error');
+    container.textContent = message;
+    document.body.appendChild(container);
+
+    setTimeout(() => {
+      container.remove();
+    }, 2500);
+  }
+
+  function addToCart() {
+    showPopup('Image Successfully Added to Cart.');
+  }
+
+
+</script>
+  
+</body>
+</html>

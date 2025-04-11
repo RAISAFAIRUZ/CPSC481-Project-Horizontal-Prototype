@@ -1,0 +1,361 @@
+/* Import Lora Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* Reset and general styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* General Styles */
+body {
+  font-family: Lora, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;  /* Ensure the body takes full viewport height */
+  background-color: #feedd5ff;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  overflow-y: hidden; /* Prevent vertical scrolling under header */
+}
+
+
+/* HEADER */
+.navigation {
+  display: flex;
+  align-items: center;            
+  justify-content: flex-end;      
+  background: #feedd5ff;        
+  padding: 10px 20px;            
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;        
+  margin-bottom: 0;              
+  height: 60px; 
+}
+
+/* Logo Section */
+.logo {
+  margin-right: auto;               
+}
+
+/* Logo Section */
+.logo img {
+    width: 90px;                   /* Set width */
+    height: auto;                  /* Maintain aspect ratio */
+    margin-right: 5px;
+}
+
+/* Navigation Links */
+.nav-links {
+  display: flex;
+  gap: 20px;                       /* Space between each link */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: black;                    /* color for text */
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #f4a261;                  /* Color change when hovered */
+}
+
+/* Sign In Button */
+.sign-in-btn {
+  background: #f4a261;            /* Button background */
+  color: black;
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+  text-decoration: none;           /* Remove underline */
+  margin-left: 20px;               /* Space between the last link and the button */
+}
+
+.sign-in-btn:hover {
+  background: #e76f51;             /* Darken the button when hovered */
+}
+/* HEADER END*/
+
+
+/* MAIN CONTENT */
+
+/* ==== Container for Main Page Content ==== */
+.container {
+  display: block;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+
+  max-width: 1200px;
+
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #feedd5ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.01);
+  box-sizing: border-box;
+  position: relative; /* This makes sure the absolute buttons inside are positioned relative to it */
+
+}
+
+.image-text .sub-label {
+  font-size: 14px;
+  color: #777; 
+  margin-top: -8px; 
+  font-weight: normal; 
+
+}
+
+
+
+/* ==== Main Content Section ==== */
+.main-content {
+  flex: 1;
+  padding: 40px 20px;
+  background-color: #feedd5ff;
+}
+
+/* ==== Page Title ==== */
+.page-title {
+  text-align: left;
+  margin-bottom: 20px;  /* Space between title and content */
+}
+
+.page-title h1 {
+  font-size: 32px;  /* Adjust the title size */
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+/* ==== Feature Editor Content (Image + Button Layout) ==== */
+.feature-editor-content {
+  display: block; /* Default block display, no need to apply flex */
+  gap: 30px;
+}
+
+/* Image Row */
+.image-row {
+  display: flex;             
+  flex-direction: row;       
+  gap: 50px;                 
+  margin-bottom: 40px;    
+  align-items: center;
+  
+}
+
+/* Image Styling */
+.image-row img {
+  width: 400px;              
+  height: 300px;            
+  object-fit: cover;        
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Text Styling */
+.image-text {
+  display: flex;
+  flex-direction: column;    
+  gap: 15px;                 
+}
+
+.image-text p {
+  font-size: 20px;
+  color: #333;
+  font-weight: bold;
+
+}
+
+.image-text button {
+  padding: 10px 20px;        
+  background-color: #f4a261;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Lora', serif;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.image-text button:hover {
+  background-color: #e76f51;
+}
+
+.editBtn {
+  display: inline-block;             
+  background-color: #f4a261;        
+  color: black;                      
+  padding: 10px 20px;                
+  border-radius: 5px;                
+  text-decoration: none;             
+  font-weight: bold;                 
+  text-align: center;                
+  transition: background-color 0.3s ease;
+  width: 100px;                     
+  height: 40px;
+}
+
+.editBtn:hover {
+  background-color: #e76f51;         /* Darker color on hover */
+}
+
+
+/*FOOTER START*/
+/* Ensure the footer does not exceed the width of the page */
+footer {
+  width: 100%;        /* Makes sure the footer spans the entire width */
+  box-sizing: border-box; /* Ensures padding does not increase the width */
+  padding: 0;
+}
+
+/* Prevent any horizontal overflow */
+body, html {
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+.footer {
+  background-color: #fad370ff;    /* Yellow background for footer */
+  color: black;                   /* text color */
+  display: flex;
+  justify-content: space-between;   /* Space between logo & links */
+  align-items: flex-start;          /* Align all items to the top */
+  padding: 40px 20px;
+  width: 100%;
+  box-sizing: border-box;
+
+}
+
+/* Left Section (Logo and Social Media Icons) */
+.left-section {
+  display: flex;
+  flex-direction: column;  /* Stack logo and social icons vertically */
+  align-items: flex-start; /* Align to the left side */
+  gap: 20px;               /* Space between logo and icons */
+}
+
+/* Footer Logo */
+.footer-logo {
+  font-size: 16px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* Social Icons Section */
+.social-icons {
+  display: flex;
+  gap: 15px;                 /* Space between icons */
+  align-items: flex-start;     /* Align icons to the top */
+  margin-top: 20px;
+}
+
+.social-icon img {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Social Icon Hover Effect */
+.social-icon:hover img {
+  transform: scale(1.1);  /* Zoom effect on hover */
+}
+
+/* Footer Items (Links Section) */
+.footer-items {
+  display: flex;
+  justify-content: flex-end;   /* Align items to the right */
+  gap: 50px;                   /* Space between columns */
+  width: 100%;                 /* Ensure the items fill the width */
+}
+
+/* Footer Column Styling */
+.footer-column {
+  display: flex;
+  flex-direction: column;   /* Stack links vertically */
+  gap: 15px;                /* Space between links */
+}
+
+.about-label,
+.faq-label {
+    color: inherit;
+    text-decoration: none;
+    cursor: default;
+    font-weight: bold; 
+    font-size: 12px;
+}
+
+/* Footer Links Styling */
+.footer-item a {
+  text-decoration: none;
+  color: black;
+  font-size: 12px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+/* Make "About" and "FAQ" bolder */
+.footer-item a.about-link,
+.footer-item a.faq-link {
+  font-weight: 700;  
+}
+
+/* Default footer link weight (for other links) */
+.footer-item a {
+  font-weight: 500; 
+}
+
+/* Hover effect for links */
+.footer-item a:hover {
+color: #f4a261;  /* Change color on hover */
+}
+
+/*FOOTER END*/
+
+.checkout-button-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.checkout-btn {
+  background-color: #f4a261;
+  color: black;
+  font-family: Lora;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none; 
+}
+
+.checkout-btn:hover {
+  background-color: #e76f51;
+}
+
+
+.cart-summary {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.subtotal-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}

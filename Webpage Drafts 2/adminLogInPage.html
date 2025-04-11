@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Sign In</title>
+    <link rel="stylesheet" href="signInStyle.css"> <!-- Use the same CSS file for consistency -->
+</head>
+<body>
+    <!-- Placeholder for the header -->
+    <header class="navigation">
+        <!-- Logo Section -->
+        <div class="logo">
+          <a href="adminHomepage.html">
+            <img src="../Images/logo.png" alt="Website Logo">
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="nav-links">
+          <a href="adminLogInPage.html">Edit Feature</a>
+          <a href="adminLogInPage.html"> Edit Shop</a>
+          <a href="adminLogInPage.html">Edit FAQ</a>
+          <a href="adminLogInPage.html">Edit About</a>
+          <a href="adminLogInPage.html">Help</a>
+        </nav>
+    
+        <!-- Sign In Button -->
+        <a href="adminLogInPage.html" class="sign-in-btn">Sign In</a>
+    </header>
+
+    <!-- Sign In Form Container -->
+    <div class="outer-container">
+        <h1>Feature Page Layout Editor</h1>
+
+        <div class="sign-in-container">
+            <h1>Sign In</h1>
+            
+            <form id="signInForm" action="adminHomepageSignIn.html" method="POST" class="sign-in-form">
+                <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="email" id="username" name="username" required placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Sign In</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <div class="divider"></div>
+
+        <!-- Left Section: Logo and Social Media Icons -->
+        <div class="left-section">
+            <div class="footer-logo">
+                <span>LUMINOUS LENS</span>
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/" target="_blank" class="social-icon">
+                    <img src="../Images/facebook.png" alt="Facebook">
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="social-icon">
+                    <img src="../Images/instagram.png" alt="Instagram">
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" class="social-icon">
+                    <img src="../Images/linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://www.twitter.com/" target="_blank" class="social-icon">
+                    <img src="../Images/twitter.png" alt="Twitter">
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-items">
+
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="about-label">Edit Shop</span>
+                </div>
+                <div class="footer-item">
+                    <a href="editShop.html">Edit Photos</a>
+                </div>
+                <div class="footer-item">
+                    <a href="editShop.html">Add New Category</a>
+                </div>
+            </div>
+    
+            <div class="footer-column">
+                <div class="footer-item">
+                    <span class="faq-label">Other</span>
+                </div>
+                <div class="footer-item">
+                    <a href="editFaq.html">Edit FAQ</a>
+                </div>
+                <div class="footer-item">
+                    <a href="editAbout.html">Edit About</a>
+                </div>
+            </div>
+        </div>
+    </section>   
+
+  <script src="editAboutScript.js"></script> 
+
+  <script>
+    // Simple popup
+    function showPopup(message, isError = false) {
+      const container = document.createElement('div');
+      container.className = 'popup-message';
+      if (isError) container.classList.add('error');
+      container.textContent = message;
+      document.body.appendChild(container);
+      setTimeout(() => {
+        container.remove();
+        window.location.href = 'adminLogInPage.html'; // send to login page
+      }, 2000);
+    }
+  
+    // Apply to all header links, except logo and sign-in
+    document.addEventListener('DOMContentLoaded', () => {
+      const headerLinks = document.querySelectorAll('header a, .footer-items a');
+  
+      headerLinks.forEach(link => {
+        // Exclude logo and sign-in links
+        if (link.href.includes('adminHomepage.html') || link.classList.contains('sign-in-btn')) {
+          return;
+        }
+  
+        link.addEventListener('click', (e) => {
+          e.preventDefault(); // Stop default link behavior
+          showPopup('Please sign in to access this page.', true);
+        });
+      });
+    });
+  </script>
+  
+  
+  
+</body>
+</html>
