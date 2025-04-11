@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQ Page</title>
+    <link rel="stylesheet" href="../styles2.css" />
+</head>
+
+<body>
+
+    <!-- Placeholder for header -->
+    <div id="header-container"></div>
+
+    <!-- FAQ Section -->
+    <section id="faq-page" class="page active">
+        <h1>Edit Frequently Asked Questions</h1>
+
+        <!-- FAQ List -->
+        <div id="faq-list">
+            <div class="faq-item">
+                <h3><strong>How can I download?</strong></h3>
+                <p>Once your payment has been processes your will be prompted to to a download page where there will be
+                    a "Download" button. An email will also be sent to your email with the download link. If you have
+                    created an account you can also see your past purchases on your My Account Page where can also
+                    download. If any issues arise email admin@luminouslens.com.</p>
+                <button class="edit-btn">EDIT</button>
+                <button class="remove-btn">REMOVE</button>
+            </div>
+
+            <div class="faq-item">
+                <h3><strong>Do you take clients photographs?</strong></h3>
+                <p>I do take client photographs on a case by case basis given my availability. Please email me at
+                    luna@luminouslens.com to inquire about any personal photography sessions.</p>
+                <button class="edit-btn">EDIT</button>
+                <button class="remove-btn">REMOVE</button>
+            </div>
+
+            <div class="faq-item">
+                <h3><strong>I don't like the photo I purchased, can I return it?</strong></h3>
+                <p>Unfortunately given the nature of the digital downloads, I am unable to process refunds on purchases.
+                    Please note all sales are final.</p>
+                <button class="edit-btn">EDIT</button>
+                <button class="remove-btn">REMOVE</button>
+            </div>
+
+            <div class="faq-item">
+                <h3><strong>I cannot find the picture in my email, what should I do?</strong></h3>
+                <p>Sometimes the downloaded pictures end up in the junk folder, checking that would. If you still cannot
+                    find the picture we can send the picture to your email!</p>
+                <button class="edit-btn">EDIT</button>
+                <button class="remove-btn">REMOVE</button>
+            </div>
+        </div>
+
+        <!-- Add New Q/A Form -->
+        <div class="add-new-qa">
+            <h2>Add New Q/A</h2>
+            <div class="new-qa-container" id="new-qa-container">
+                <div class="plus-icon">+</div>
+            </div>
+            <button class="add-new" id="add-new">ADD NEW</button>
+        </div>
+    </section>
+
+    <!-- Placeholder for footer -->
+    <div id="footer-container"></div>
+
+    <!-- Inject header and footer dynamically -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Load header.html into header-container
+            fetch("header.html")
+                .then((res) => res.text())
+                .then((data) => {
+                    document.getElementById("header-container").innerHTML = data;
+                });
+
+            // Load footer.html into footer-container
+            fetch("footer.html")
+                .then((res) => res.text())
+                .then((data) => {
+                    document.getElementById("footer-container").innerHTML = data;
+                });
+        });
+    </script>
+
+    <!-- Optional: Custom logic -->
+    <script src="../script1.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Add New Q/A</title>
+    <link rel="stylesheet" href="headerFooterStyle.css" />
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-color: #FEEDD5;
+            color: black;
+            margin: 0;
+            padding: 0;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 40px 40px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #aaa;
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .button-group button {
+            padding: 10px 20px;
+            background-color: black;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .button-group button:hover {
+            background-color: #333;
+        }
+
+        .popup-container {
+            font-family: 'Lora', serif;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            background-color: #ffdddd;
+            border: 2px solid #ff4d4d;
+            padding: 20px;
+            border-radius: 8px;
+            color: #ff4d4d;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none;
+            text-align: center;
+        }
+
+        .popup-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .popup-buttons button {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-style: italic;
+            cursor: pointer;
+        }
+
+        .popup-container.success {
+            background-color: #ddffdd;
+            border-color: #33cc33;
+            color: #228822;
+        }
+
+        .popup-buttons.success button {
+            background-color: #33cc33;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <div w3-include-html="header.html"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-container">
+        <h1>Add New Q/A</h1>
+
+        <label for="question">Question</label>
+        <textarea id="question" rows="2"></textarea>
+
+        <label for="answer">Answer</label>
+        <textarea id="answer" rows="4"></textarea>
+
+        <div class="button-group">
+            <button onclick="showCancelPopup()">Cancel</button>
+            <button onclick="saveChanges()">Save</button>
+        </div>
+    </div>
+
+    <!-- CANCEL POPUP -->
+    <div class="popup-container" id="cancelPopup">
+        <p>Are you sure you want to cancel? All unsaved changes will be lost.</p>
+        <div class="popup-buttons">
+            <button onclick="redirectToFAQ()">Yes</button>
+            <button onclick="closePopup('cancelPopup')">No</button>
+        </div>
+    </div>
+
+    <!-- SUCCESS POPUP -->
+    <div class="popup-container success" id="successPopup">
+        <p>Success! Your new question has been added.</p>
+        <div class="popup-buttons success">
+            <button onclick="confirmSave()">OK</button>
+        </div>
+    </div>
+
+    <!-- ERROR POPUP -->
+    <div class="popup-container" id="errorPopup">
+        <p id="errorMessage"></p>
+        <div class="popup-buttons">
+            <button onclick="closePopup('errorPopup')">OK</button>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div w3-include-html="footer.html"></div>
+
+    <script src="headerFooter.js"></script>
+    <script>
+        function showCancelPopup() {
+            document.getElementById('cancelPopup').style.display = 'block';
+        }
+
+        function closePopup(id) {
+            document.getElementById(id).style.display = 'none';
+        }
+
+        function redirectToFAQ() {
+            window.location.href = 'edit-qa.html';
+        }
+
+        function confirmSave() {
+            window.location.href = 'edit-qa.html';
+        }
+
+        function showErrorPopup(message) {
+            document.getElementById('errorMessage').innerText = message;
+            document.getElementById('errorPopup').style.display = 'block';
+        }
+
+        function saveChanges() {
+            const q = document.getElementById('question').value.trim();
+            const a = document.getElementById('answer').value.trim();
+            if (!q || !a) {
+                showErrorPopup("Please fill in both the question and answer.");
+                return;
+            }
+
+            const newQA = { question: q, answer: a };
+            const stored = JSON.parse(localStorage.getItem('newQAs') || "[]");
+            stored.push(newQA);
+            localStorage.setItem('newQAs', JSON.stringify(stored));
+
+            document.getElementById('successPopup').style.display = 'block';
+        }
+    </script>
+
+    
+</body>
+
+</html>
