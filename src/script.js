@@ -74,15 +74,20 @@ function previewPhoto() {
         return;
     }
 
+    // 🔽 Remove any existing preview overlays
+    const existingOverlay = document.querySelector('.photo-preview-overlay');
+    if (existingOverlay) existingOverlay.remove();
+
     const overlay = document.createElement('div');
-    overlay.className = 'fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50';
+    overlay.className = 'photo-preview-overlay fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50';
     overlay.innerHTML = `
         <div class="relative bg-white p-4 rounded-lg max-w-3xl">
-            <button class="absolute top-2 right-2 text-black font-bold" onclick="this.parentElement.parentElement.remove()">X</button>
+            <button class="absolute top-2 right-2 text-black font-bold" onclick="this.closest('.photo-preview-overlay').remove()">X</button>
             <img src="${preview.src}" class="max-h-[80vh] rounded" />
         </div>`;
     document.body.appendChild(overlay);
 }
+
 
 function handleSubmit(e) {
     e.preventDefault();
