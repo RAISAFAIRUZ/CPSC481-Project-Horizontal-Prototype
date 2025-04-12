@@ -88,9 +88,29 @@
 
         window.onload = () => {
             const select = document.getElementById("categorySelect");
-            const categories = JSON.parse(localStorage.getItem("categories")) || [];
 
-            categories.forEach(cat => {
+            // Step 1: Define hardcoded categories
+            const hardcoded = [
+                { name: "Ocean", description: "Waterfronts, waves, and sea serenity." },
+                { name: "Sunset", description: "Colorful skies and golden hour shots." }
+            ];
+
+            // Step 2: Load from localStorage
+            const stored = JSON.parse(localStorage.getItem("categories")) || [];
+
+            // Step 3: Merge without duplication
+            const existingNames = stored.map(c => c.name);
+            hardcoded.forEach(h => {
+                if (!existingNames.includes(h.name)) {
+                    stored.push(h);
+                }
+            });
+
+            // Step 4: Update localStorage
+            localStorage.setItem("categories", JSON.stringify(stored));
+
+            // Step 5: Populate dropdown
+            stored.forEach(cat => {
                 const option = document.createElement("option");
                 option.value = cat.name;
                 option.textContent = cat.name;
@@ -111,14 +131,14 @@
             const popup = document.createElement("div");
             popup.classList.add("popup-container");
             popup.innerHTML = `
-        <h2>${message}</h2>
-        <div class="popup-buttons">
-          <button onclick="this.closest('.popup-container').remove()">OK</button>
-        </div>`;
+                <h2>${message}</h2>
+                <div class="popup-buttons">
+                    <button onclick="this.closest('.popup-container').remove()">OK</button>
+                </div>`;
             document.body.appendChild(popup);
         }
     </script>
-    
+
 </body>
 
 </html>

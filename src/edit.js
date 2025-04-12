@@ -1,8 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const index = urlParams.get('index');
-    const photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
-    const photo = photos[index];
+    const tempIndex = urlParams.get('tempIndex');
+
+    let photos, photo;
+
+    if (tempIndex !== null) {
+        photos = JSON.parse(localStorage.getItem('tempLibrary')) || [];
+        photo = photos[tempIndex];
+    } else {
+        photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+        photo = photos[index];
+    }
 
     // Set the photo image
     document.getElementById('photo').src = photo.src;
@@ -35,7 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const description = document.getElementById('description').value.trim();
         const motivation = document.getElementById('motivation').value.trim();
         const hashtags = document.getElementById('hashtags').value.trim();
-        const category = document.getElementById('category').value.trim();
+        let category = document.getElementById('category').value.trim();
+        category = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase(); // Normalize
+
 
         // Validate BEFORE showing confirmation
         if (!name || !place || !price || !description || !motivation || !hashtags || !category) {
@@ -53,14 +64,17 @@ document.addEventListener('DOMContentLoaded', () => {
             "Are you sure you want to save these changes?",
             "All previous unsaved changes will be applied.",
             () => {
-                const success = savePhoto(index);
+                const success = savePhoto(index, tempIndex);
                 popup.remove();
                 if (success) {
                     const successPopup = createPopup("Photo updated successfully.", true);
                     document.body.appendChild(successPopup);
                     setTimeout(() => {
                         successPopup.remove();
-                        window.location.href = `viewPhoto.html?index=${index}`;
+                        const redirectLink = tempIndex !== null
+                            ? `viewPhoto.html?index=temp`
+                            : `viewPhoto.html?index=${index}`;
+                        window.location.href = redirectLink;
                     }, 1800);
                 }
             }
@@ -83,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ✅ Save logic with full validation and category update
-function savePhoto(index) {
+function savePhoto(index, tempIndex) {
     const name = document.getElementById('name').value.trim();
     const place = document.getElementById('place').value.trim();
     const price = document.getElementById('price').value.trim();
@@ -92,7 +106,6 @@ function savePhoto(index) {
     const hashtags = document.getElementById('hashtags').value.trim();
     const category = document.getElementById('category').value.trim();
 
-    // Final safety validation (in case someone skips via JS)
     if (!name || !place || !price || !description || !motivation || !hashtags || !category) {
         showErrorPopup("One or more fields are empty. Please fill out all fields.");
         return false;
@@ -103,25 +116,33 @@ function savePhoto(index) {
         return false;
     }
 
-    let photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
-    const oldCategory = photos[index].category;
-
-    // Update main photo list
     const updatedPhoto = {
-        name, place, price, description, motivation, hashtags, category, src: photos[index].src
+        name, place, price, description, motivation, hashtags, category
     };
-    photos[index] = updatedPhoto;
-    localStorage.setItem('photoLibrary', JSON.stringify(photos));
 
-    // Handle category change
-    if (oldCategory !== category) {
-        let oldImages = JSON.parse(localStorage.getItem(`categoryImages_${oldCategory}`)) || [];
-        oldImages = oldImages.filter(p => p.src !== updatedPhoto.src);
-        localStorage.setItem(`categoryImages_${oldCategory}`, JSON.stringify(oldImages));
+    if (tempIndex !== null) {
+        let photos = JSON.parse(localStorage.getItem('tempLibrary')) || [];
+        updatedPhoto.src = photos[tempIndex].src;
+        photos[tempIndex] = updatedPhoto;
+        localStorage.setItem('tempLibrary', JSON.stringify(photos));
+    } else {
+        let photos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+        const oldCategory = photos[index].category;
+        updatedPhoto.src = photos[index].src;
 
-        let newImages = JSON.parse(localStorage.getItem(`categoryImages_${category}`)) || [];
-        newImages.push(updatedPhoto);
-        localStorage.setItem(`categoryImages_${category}`, JSON.stringify(newImages));
+        photos[index] = updatedPhoto;
+        localStorage.setItem('photoLibrary', JSON.stringify(photos));
+
+        // Handle category reassignment
+        if (oldCategory !== category) {
+            let oldImages = JSON.parse(localStorage.getItem(`categoryImages_${oldCategory}`)) || [];
+            oldImages = oldImages.filter(p => p.src !== updatedPhoto.src);
+            localStorage.setItem(`categoryImages_${oldCategory}`, JSON.stringify(oldImages));
+
+            let newImages = JSON.parse(localStorage.getItem(`categoryImages_${category}`)) || [];
+            newImages.push(updatedPhoto);
+            localStorage.setItem(`categoryImages_${category}`, JSON.stringify(newImages));
+        }
     }
 
     return true;

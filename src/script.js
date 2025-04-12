@@ -60,11 +60,7 @@ function handlePreviewChange(e) {
     if (file) {
         preview.src = URL.createObjectURL(file);
         preview.classList.remove('hidden');
-
-        // Remove upload text and icon
         uploadLabel.style.display = "none";
-
-        // Make image fill the box
         preview.classList.add('w-full', 'h-full', 'object-cover', 'rounded-xl');
     }
 }
@@ -81,10 +77,10 @@ function previewPhoto() {
     const overlay = document.createElement('div');
     overlay.className = 'fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50';
     overlay.innerHTML = `
-    <div class="relative bg-white p-4 rounded-lg max-w-3xl">
-        <button class="absolute top-2 right-2 text-black font-bold" onclick="this.parentElement.parentElement.remove()">X</button>
-        <img src="${preview.src}" class="max-h-[80vh] rounded" />
-    </div>`;
+        <div class="relative bg-white p-4 rounded-lg max-w-3xl">
+            <button class="absolute top-2 right-2 text-black font-bold" onclick="this.parentElement.parentElement.remove()">X</button>
+            <img src="${preview.src}" class="max-h-[80vh] rounded" />
+        </div>`;
     document.body.appendChild(overlay);
 }
 
@@ -97,7 +93,9 @@ function handleSubmit(e) {
     const description = document.getElementById('description').value.trim();
     const motivation = document.getElementById('motivation').value.trim();
     const hashtags = document.getElementById('hashtags').value.trim();
-    const category = document.getElementById('category').value.trim();
+    let category = document.getElementById('category').value.trim();
+    category = category.charAt(0).toUpperCase() + category.slice(1).toLowerCase(); // Normalize
+
     const photo = document.getElementById('photo').files[0];
 
     if (!photo) {
@@ -134,15 +132,13 @@ function handleSubmit(e) {
         showPopupMessage("Success! Photo has been added.");
 
         setTimeout(() => {
-            window.location.href = '/src/index.html';
+            window.location.href = 'index.html';
         }, 1500);
     };
     reader.readAsDataURL(photo);
 }
 
-
 function cancelUpload() {
-    // Remove any existing popup
     const existing = document.querySelector('.popup-container');
     if (existing) existing.remove();
 
@@ -158,4 +154,3 @@ function cancelUpload() {
     `;
     document.body.appendChild(popup);
 }
-

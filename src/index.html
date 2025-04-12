@@ -5,29 +5,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edit Full Library</title>
-
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Fonts and Styles -->
     <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="headerFooterStyle.css" />
     <link rel="stylesheet" href="styles.css" />
-
     <style>
         body {
             font-family: 'Lora', serif;
             background-color: #FEEDD5;
             color: black;
         }
+
+        .upload-box {
+            border: 2px dashed black;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 12px;
+            background-color: white;
+            transition: 0.3s ease;
+        }
+
+        .upload-box:hover {
+            background-color: #fdf0db;
+        }
     </style>
 </head>
 
 <body>
-    <!-- Header -->
     <div w3-include-html="header.html"></div>
 
-    <!-- Main Content -->
     <div class="max-w-7xl mx-auto p-8 flex flex-col">
         <h1 class="text-3xl font-bold mb-2">Edit Full Library</h1>
         <p class="text-base font-semibold text-gray-700 leading-relaxed">
@@ -48,9 +56,7 @@
         <p id="category-description" class="mt-2 text-sm italic text-gray-700"></p>
 
         <!-- Photo Grid -->
-        <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-6">
-            <!-- Photos inserted by JS -->
-        </div>
+        <div id="photo-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-6"></div>
 
         <!-- Upload Box -->
         <div onclick="window.location.href='upload.html'" class="upload-box">
@@ -58,13 +64,10 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <div w3-include-html="footer.html"></div>
 
-    <!-- Scripts -->
     <script src="headerFooter.js"></script>
     <script>includeHTML();</script>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const grid = document.getElementById('photo-grid');
@@ -72,64 +75,139 @@
             const dropdown = document.getElementById('categoryFilter');
             const descBox = document.getElementById('category-description');
 
-            const allPhotos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
-            const categories = JSON.parse(localStorage.getItem('categories')) || [];
+            // Static admin photos
+            const adminPhotos = [
+                {
+                    name: "Maui Sunset",
+                    place: "Maui, Hawaii",
+                    price: "$3.99",
+                    description: "Orange glow along the shoreline.",
+                    motivation: "My favorite photo from Maui trip.",
+                    hashtags: "#sunset #hawaii",
+                    category: "Tropical",
+                    src: "../Images/PinkSunset.jpg"
+                },
+                {
+                    name: "Cloudy Island",
+                    place: "Oahu, Hawaii",
+                    price: "$0.70",
+                    description: "Misty morning above the cliffs.",
+                    motivation: "Wanted to capture contrast of shadows and light.",
+                    hashtags: "#cloudy #hawaii",
+                    category: "Tropical",
+                    src: "../Images/HawaiiRainbow.jpg"
+                },
+                {
+                    name: "Sunshine Shore",
+                    place: "Big Island, Hawaii",
+                    price: "$0.80",
+                    description: "Calm before sunset by the shore.",
+                    motivation: "Inspired by silence and serenity.",
+                    hashtags: "#beach #sunset",
+                    category: "Tropical",
+                    src: "../Images/BeachSunset.jpg"
+                }
+            ];
 
-            // Populate dropdown
-            categories.forEach(cat => {
-                const option = document.createElement('option');
-                option.value = cat.name;
-                option.textContent = cat.name;
-                dropdown.appendChild(option);
+            const uploadedPhotos = JSON.parse(localStorage.getItem('photoLibrary')) || [];
+            const allPhotos = [...adminPhotos, ...uploadedPhotos];
+
+            // Hardcoded categories
+            const hardcoded = [
+                { name: "Ocean", description: "Waterfronts, waves, and sea serenity." },
+                { name: "Sunset", description: "Colorful skies and golden hour shots." }
+            ];
+
+            // Merge with localStorage categories
+            const stored = JSON.parse(localStorage.getItem("categories")) || [];
+            const existingNames = stored.map(c => c.name);
+            hardcoded.forEach(h => {
+                if (!existingNames.includes(h.name)) {
+                    stored.push(h);
+                }
             });
+            localStorage.setItem("categories", JSON.stringify(stored));
 
-            // Initial render
-            renderPhotos(allPhotos);
-            descBox.textContent = '';
+            const categories = stored;
+
+            // Populate filter dropdown
+            categories.forEach(cat => {
+                const opt = document.createElement('option');
+                opt.value = cat.name;
+                opt.textContent = cat.name;
+                dropdown.appendChild(opt);
+            });
 
             dropdown.addEventListener('change', () => {
                 const selected = dropdown.value;
-                const filtered = selected
-                    ? allPhotos.filter(p => p.category === selected)
-                    : allPhotos;
 
-                // Set category description
+                let filtered;
+                if (selected === "Ocean") {
+                    filtered = [{
+                        name: "Sunshine Shore",
+                        place: "Big Island, Hawaii",
+                        price: "$0.99",
+                        description: "Calm before sunset by the shore.",
+                        motivation: "Inspired by silence and serenity.",
+                        hashtags: "#beach #sunset",
+                        category: "Ocean",
+                        src: "../Images/BeachSunset.jpg"
+                    }];
+                } else if (selected === "Sunset") {
+                    filtered = [{
+                        name: "Maui Sunset",
+                        place: "Maui, Hawaii",
+                        price: "$0.99",
+                        description: "Orange glow along the shoreline.",
+                        motivation: "My favorite photo from Maui trip.",
+                        hashtags: "#sunset #hawaii",
+                        category: "Sunset",
+                        src: "../Images/PurpleSunset.jpg"
+                    }];
+                } else {
+                    filtered = selected
+                        ? allPhotos.filter(p =>
+                            p.category?.trim().toLowerCase() === selected.trim().toLowerCase()
+                        )
+                        : allPhotos;
+                }
+
                 const match = categories.find(c => c.name === selected);
-                descBox.textContent = `Category Description: ${match.description}`;
-
-
+                descBox.textContent = selected && match ? `Category Description: ${match.description}` : '';
                 renderPhotos(filtered);
             });
 
+            renderPhotos(allPhotos);
+
             function renderPhotos(photos) {
                 grid.innerHTML = '';
-                photos.forEach((photo, i) => {
-                    const item = document.createElement('div');
-                    item.className = 'bg-white rounded-lg overflow-hidden shadow cursor-pointer';
-                    item.addEventListener('click', () => {
-                        const globalIndex = getOriginalIndex(photo);
-                        window.location.href = `viewPhoto.html?index=${globalIndex}`;
+                photos.forEach((photo, index) => {
+                    const div = document.createElement('div');
+                    div.className = 'bg-white rounded-lg overflow-hidden shadow cursor-pointer';
+                    div.addEventListener('click', () => {
+                        const isUploaded = uploadedPhotos.includes(photo);
+                        if (isUploaded) {
+                            const idx = uploadedPhotos.indexOf(photo);
+                            window.location.href = `viewPhoto.html?index=${idx}`;
+                        } else {
+                            localStorage.setItem('viewPhotoTemp', JSON.stringify(photo));
+                            window.location.href = `viewPhoto.html?index=temp`;
+                        }
                     });
-                    item.innerHTML = `
-            <img src="${photo.src}" alt="${photo.name}" class="w-full h-40 object-cover">
-            <div class="p-2">
-              <strong>${photo.name}</strong>
-              <p>${photo.category}</p>
-              <p>${photo.price}</p>
-            </div>
-          `;
-                    grid.appendChild(item);
+                    div.innerHTML = `
+                <img src="${photo.src}" alt="${photo.name}" class="w-full h-40 object-cover">
+                <div class="p-2">
+                  <strong>${photo.name}</strong>
+                  <p>${photo.category}</p>
+                  <p>${photo.price}</p>
+                </div>`;
+                    grid.appendChild(div);
                 });
                 count.textContent = `${photos.length} photos found.`;
             }
-
-            function getOriginalIndex(photo) {
-                const all = JSON.parse(localStorage.getItem('photoLibrary')) || [];
-                return all.findIndex(p => JSON.stringify(p) === JSON.stringify(photo));
-            }
         });
     </script>
-    
+
 </body>
 
 </html>
